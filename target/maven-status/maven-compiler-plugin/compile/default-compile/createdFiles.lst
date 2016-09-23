@@ -1,0 +1,17 @@
+refscheduler\domain\TeamGet.class
+refscheduler\domain\TeamAffiliationGet.class
+refscheduler\entity\TeamEntity.class
+refscheduler\Main.class
+refscheduler\controller\TeamController.class
+refscheduler\controller\PersonController.class
+refscheduler\repository\PersonRepository.class
+refscheduler\domain\AffiliationType.class
+refscheduler\domain\TeamCreate.class
+refscheduler\service\PersonService.class
+refscheduler\entity\PersonEntity.class
+refscheduler\DozerMapper.class
+refscheduler\repository\TeamRepository.class
+refscheduler\domain\PersonCreate.class
+refscheduler\domain\PersonGet.class
+refscheduler\service\TeamService.class
+refscheduler\domain\Level.class
