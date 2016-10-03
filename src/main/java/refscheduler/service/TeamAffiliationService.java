@@ -11,7 +11,7 @@ import refscheduler.repository.PersonRepository;
 import refscheduler.repository.TeamAffiliationRepository;
 import refscheduler.repository.TeamRepository;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,7 +43,13 @@ public class TeamAffiliationService {
 
         final List<TeamAffiliationEntity> entities = teamAffiliationRepository.findByTeam(teamEntity);
 
-        return Arrays.asList(mapper.map(entities, TeamAffiliationGet[].class));
+        final List<TeamAffiliationGet> gets = new ArrayList<>();
+
+        for (TeamAffiliationEntity entity : entities) {
+            gets.add(mapper.map(entity, TeamAffiliationGet.class));
+        }
+
+        return gets;
     }
 
     public Long createTeamAffiliation(final TeamAffiliationCreate affiliationCreate) {

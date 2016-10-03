@@ -9,7 +9,6 @@ refscheduler\domain\AffiliationType.class
 refscheduler\domain\TeamCreate.class
 refscheduler\service\PersonService.class
 refscheduler\entity\PersonEntity.class
-refscheduler\DozerMapper.class
 refscheduler\repository\TeamRepository.class
 refscheduler\domain\PersonCreate.class
 refscheduler\domain\PersonGet.class

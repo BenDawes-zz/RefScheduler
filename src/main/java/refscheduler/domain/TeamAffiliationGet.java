@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 /**
  * Team Affiliation Get DTO.
  */
-public class TeamAffiliationGet {
+public class TeamAffiliationGet implements Comparable<TeamAffiliationGet> {
 
     private Long affiliationId;
 
@@ -62,5 +62,20 @@ public class TeamAffiliationGet {
     @Override
     public String toString() {
         return ReflectionToStringBuilder.reflectionToString(this);
+    }
+
+    @Override
+    public int compareTo(final TeamAffiliationGet that) {
+        if (this.equals(that)) {
+            return 0;
+        }
+
+        final int affiliationComparison = this.affiliation.compareTo(that.affiliation);
+
+        if (affiliationComparison == 0) {
+            return this.person.compareTo(that.person);
+        } else {
+            return affiliationComparison;
+        }
     }
 }

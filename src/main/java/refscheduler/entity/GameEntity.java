@@ -6,7 +6,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 /**
  * Game entity.
@@ -31,8 +30,9 @@ public class GameEntity {
     private TeamEntity teamB;
 
     @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date time;
+    @ManyToOne
+    @JoinColumn(name = "TIMESLOT_ID")
+    private TimeslotEntity timeslot;
 
     @ManyToOne
     @JoinColumn(name = "HEAD_REFEREE_ID")
@@ -89,12 +89,12 @@ public class GameEntity {
         this.teamB = teamB;
     }
 
-    public Date getTime() {
-        return time;
+    public TimeslotEntity getTimeslot() {
+        return timeslot;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setTimeslot(TimeslotEntity time) {
+        this.timeslot = time;
     }
 
     public PersonEntity getHeadReferee() {
@@ -173,7 +173,7 @@ public class GameEntity {
                 .append(gameId, that.gameId)
                 .append(teamA, that.teamA)
                 .append(teamB, that.teamB)
-                .append(time, that.time)
+                .append(timeslot, that.timeslot)
                 .append(headReferee, that.headReferee)
                 .append(assistantRefereeA, that.assistantRefereeA)
                 .append(assistantRefereeB, that.assistantRefereeB)
@@ -191,7 +191,7 @@ public class GameEntity {
                 .append(gameId)
                 .append(teamA)
                 .append(teamB)
-                .append(time)
+                .append(timeslot)
                 .append(headReferee)
                 .append(assistantRefereeA)
                 .append(assistantRefereeB)
@@ -209,7 +209,7 @@ public class GameEntity {
                 .append("gameId", gameId)
                 .append("teamA", teamA)
                 .append("teamB", teamB)
-                .append("time", time)
+                .append("timeslot", timeslot)
                 .append("headReferee", headReferee)
                 .append("assistantRefereeA", assistantRefereeA)
                 .append("assistantRefereeB", assistantRefereeB)

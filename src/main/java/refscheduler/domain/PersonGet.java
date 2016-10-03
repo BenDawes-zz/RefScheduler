@@ -5,10 +5,12 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
+import java.util.Random;
+
 /**
  * Person Get DTO.
  */
-public class PersonGet {
+public class PersonGet implements Comparable<PersonGet> {
 
     private Long personId;
 
@@ -103,5 +105,31 @@ public class PersonGet {
     @Override
     public String toString() {
         return ReflectionToStringBuilder.reflectionToString(this);
+    }
+
+    @Override
+    public int compareTo(final PersonGet that) {
+        if (this.equals(that)) {
+            return 0;
+        }
+
+        final int hrComparison = this.headRefereeLevel.compareTo(that.headRefereeLevel);
+        final int arComparison = this.assistantRefereeLevel.compareTo(that.assistantRefereeLevel);
+        final int srComparison = this.snitchRefereeLevel.compareTo(that.snitchRefereeLevel);
+
+        if (hrComparison == 0) {
+            if (arComparison == 0) {
+                if (srComparison == 0) {
+                    Random random = new Random();
+                    return random.nextInt(3) - 1;
+                } else {
+                    return srComparison;
+                }
+            } else {
+                return arComparison;
+            }
+        } else {
+            return hrComparison;
+        }
     }
 }

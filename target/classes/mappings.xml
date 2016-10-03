@@ -8,7 +8,7 @@
         <class-a>refscheduler.domain.GameGet</class-a>
         <class-b>refscheduler.entity.GameEntity</class-b>
 
-        <field custom-converter="refscheduler.JodaDateTimeDateConvertor">
+        <field custom-converter="refscheduler.util.JodaDateTimeDateConvertor">
             <a>time</a>
             <b>time</b>
         </field>

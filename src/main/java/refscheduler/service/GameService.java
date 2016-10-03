@@ -39,7 +39,7 @@ public class GameService {
             entity.setTeamB(teamRepository.findOne(gameCreate.getTeamB()));
         }
 
-        entity.setTime(gameCreate.getTime().toDate());
+        entity.setTimeslot(gameCreate.getTime().toDate());
 
         if (gameCreate.getHeadReferee() != null) {
             entity.setHeadReferee(personRepository.findOne(gameCreate.getHeadReferee()));
