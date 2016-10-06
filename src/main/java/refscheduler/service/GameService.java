@@ -2,6 +2,7 @@ package refscheduler.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import refscheduler.repository.TimeslotRepository;
 import refscheduler.util.DozerMapper;
 import refscheduler.domain.GameCreate;
 import refscheduler.domain.GameGet;
@@ -28,6 +29,9 @@ public class GameService {
     @Autowired
     private TeamRepository teamRepository;
 
+    @Autowired
+    private TimeslotRepository timeslotRepository;
+
     public Long createGame(final GameCreate gameCreate) {
         final GameEntity entity = new GameEntity();
 
@@ -39,7 +43,9 @@ public class GameService {
             entity.setTeamB(teamRepository.findOne(gameCreate.getTeamB()));
         }
 
-        entity.setTimeslot(gameCreate.getTime().toDate());
+        if (gameCreate.getTimeslot() != null) {
+            entity.setTimeslot(timeslotRepository.findOne(gameCreate.getTimeslot()));
+        }
 
         if (gameCreate.getHeadReferee() != null) {
             entity.setHeadReferee(personRepository.findOne(gameCreate.getHeadReferee()));

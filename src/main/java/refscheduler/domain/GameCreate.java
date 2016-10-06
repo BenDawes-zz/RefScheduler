@@ -1,26 +1,24 @@
 package refscheduler.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.joda.time.DateTime;
-import refscheduler.util.JsonDateTimeDeserializer;
-import refscheduler.util.JsonDateTimeSerializer;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * Game CREATE DTO.
  */
 public class GameCreate {
 
+    @NotNull
     private Long teamA;
 
+    @NotNull
     private Long teamB;
 
-    @JsonSerialize(using = JsonDateTimeSerializer.class)
-    @JsonDeserialize(using = JsonDateTimeDeserializer.class)
-    private DateTime time;
+    @NotNull
+    private Long timeslotId;
 
     private Long headReferee;
 
@@ -54,12 +52,12 @@ public class GameCreate {
         this.teamB = teamB;
     }
 
-    public DateTime getTime() {
-        return time;
+    public Long getTimeslot() {
+        return timeslotId;
     }
 
-    public void setTime(DateTime time) {
-        this.time = time;
+    public void setTimeslot(Long timeslotId) {
+        this.timeslotId = timeslotId;
     }
 
     public Long getHeadReferee() {
@@ -137,7 +135,7 @@ public class GameCreate {
         return new EqualsBuilder()
                 .append(teamA, that.teamA)
                 .append(teamB, that.teamB)
-                .append(time, that.time)
+                .append(timeslotId, that.timeslotId)
                 .append(headReferee, that.headReferee)
                 .append(assistantRefereeA, that.assistantRefereeA)
                 .append(assistantRefereeB, that.assistantRefereeB)
@@ -154,7 +152,7 @@ public class GameCreate {
         return new HashCodeBuilder(17, 37)
                 .append(teamA)
                 .append(teamB)
-                .append(time)
+                .append(timeslotId)
                 .append(headReferee)
                 .append(assistantRefereeA)
                 .append(assistantRefereeB)
@@ -171,7 +169,7 @@ public class GameCreate {
         return new ToStringBuilder(this)
                 .append("teamA", teamA)
                 .append("teamB", teamB)
-                .append("time", time)
+                .append("time", timeslotId)
                 .append("headReferee", headReferee)
                 .append("assistantRefereeA", assistantRefereeA)
                 .append("assistantRefereeB", assistantRefereeB)
