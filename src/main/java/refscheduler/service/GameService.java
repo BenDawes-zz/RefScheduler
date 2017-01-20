@@ -11,7 +11,6 @@ import refscheduler.repository.TeamRepository;
 import refscheduler.repository.TimeslotRepository;
 import refscheduler.util.DozerMapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -82,7 +81,7 @@ public class GameService {
 
         gameRepository.save(entity);
 
-        return entity.getGameId();
+        return entity.getId();
     }
 
     public GameGet getGame(final Long gameId) {
@@ -92,8 +91,8 @@ public class GameService {
     }
 
     public List<GameGet> getGames() {
-        final Iterable<GameEntity> entities = gameRepository.findAll();
+        final List<GameEntity> entities = gameRepository.findAll();
 
-        return mapper.map(entities, new ArrayList<GameGet>().getClass());
+        return mapper.map(entities, GameGet.class);
     }
 }

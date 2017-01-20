@@ -8,7 +8,6 @@ import refscheduler.entity.TeamEntity;
 import refscheduler.repository.TeamRepository;
 import refscheduler.util.DozerMapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,9 +29,9 @@ public class TeamService {
     }
 
     public List<TeamGet> getTeams() {
-        final Iterable<TeamEntity> entities = teamRepository.findAll();
+        final List<TeamEntity> entities = teamRepository.findAll();
 
-        return mapper.map(entities, new ArrayList<TeamGet>().getClass());
+        return mapper.map(entities, TeamGet.class);
     }
 
     public Long createTeam(final TeamCreate teamCreate) {
@@ -43,6 +42,6 @@ public class TeamService {
 
         teamRepository.save(entity);
 
-        return entity.getTeamId();
+        return entity.getId();
     }
 }

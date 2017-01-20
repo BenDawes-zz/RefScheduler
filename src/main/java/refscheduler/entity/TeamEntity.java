@@ -16,7 +16,7 @@ public class TeamEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TEAM_ID")
-    private Long teamId;
+    private Long id;
 
     @Column(name = "NAME", length = 50, nullable = false)
     private String name;
@@ -24,12 +24,12 @@ public class TeamEntity {
     @Column(name = "LOCATION", length = 50)
     private String location;
 
-    public Long getTeamId() {
-        return teamId;
+    public Long getId() {
+        return id;
     }
 
-    public void setTeamId(Long teamId) {
-        this.teamId = teamId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

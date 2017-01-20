@@ -60,6 +60,6 @@ public class TeamAffiliationService {
 
         teamAffiliationRepository.save(entity);
 
-        return entity.getAffiliationId();
+        return entity.getId();
     }
 }

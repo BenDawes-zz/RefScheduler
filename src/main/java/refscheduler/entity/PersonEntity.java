@@ -17,7 +17,7 @@ public class PersonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PERSON_ID")
-    private Long personId;
+    private Long id;
 
     @Column(name = "FIRST_NAME")
     private String firstName;
@@ -43,12 +43,12 @@ public class PersonEntity {
     @Column(name = "SNITCH")
     private Boolean snitch;
 
-    public Long getPersonId() {
-        return personId;
+    public Long getId() {
+        return id;
     }
 
-    public void setPersonId(Long personId) {
-        this.personId = personId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {

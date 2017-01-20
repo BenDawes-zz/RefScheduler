@@ -17,7 +17,7 @@ public class TeamAffiliationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "AFFILIATION_ID")
-    private Long affiliationId;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "PERSON_ID")
@@ -30,12 +30,12 @@ public class TeamAffiliationEntity {
     @Enumerated(EnumType.STRING)
     private AffiliationType affiliation;
 
-    public Long getAffiliationId() {
-        return affiliationId;
+    public Long getId() {
+        return id;
     }
 
-    public void setAffiliationId(Long affiliationId) {
-        this.affiliationId = affiliationId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public PersonEntity getPerson() {

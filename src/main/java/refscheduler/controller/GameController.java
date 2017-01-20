@@ -30,7 +30,7 @@ public class GameController {
     }
 
     @RequestMapping(path = "/games", method = RequestMethod.GET)
-    public List<GameGet> getGames() {
+    public List<GameGet> getAllGames() {
         return gameService.getGames();
     }
 }

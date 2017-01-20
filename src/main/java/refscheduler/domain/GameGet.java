@@ -1,13 +1,8 @@
 package refscheduler.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.joda.time.DateTime;
-import refscheduler.util.JsonDateTimeDeserializer;
-import refscheduler.util.JsonDateTimeSerializer;
 
 /**
  * Game GET DTO.
@@ -19,10 +14,6 @@ public class GameGet {
     private TeamGet teamA;
 
     private TeamGet teamB;
-
-    @JsonSerialize(using = JsonDateTimeSerializer.class)
-    @JsonDeserialize(using = JsonDateTimeDeserializer.class)
-    private DateTime time;
 
     private PersonGet headReferee;
 
@@ -62,14 +53,6 @@ public class GameGet {
 
     public void setTeamB(TeamGet teamB) {
         this.teamB = teamB;
-    }
-
-    public DateTime getTime() {
-        return time;
-    }
-
-    public void setTime(DateTime time) {
-        this.time = time;
     }
 
     public PersonGet getHeadReferee() {
@@ -148,7 +131,6 @@ public class GameGet {
                 .append(id, gameGet.id)
                 .append(teamA, gameGet.teamA)
                 .append(teamB, gameGet.teamB)
-                .append(time, gameGet.time)
                 .append(headReferee, gameGet.headReferee)
                 .append(assistantRefereeA, gameGet.assistantRefereeA)
                 .append(assistantRefereeB, gameGet.assistantRefereeB)
@@ -166,7 +148,6 @@ public class GameGet {
                 .append(id)
                 .append(teamA)
                 .append(teamB)
-                .append(time)
                 .append(headReferee)
                 .append(assistantRefereeA)
                 .append(assistantRefereeB)
@@ -184,7 +165,6 @@ public class GameGet {
                 .append("id", id)
                 .append("teamA", teamA)
                 .append("teamB", teamB)
-                .append("time", time)
                 .append("headReferee", headReferee)
                 .append("assistantRefereeA", assistantRefereeA)
                 .append("assistantRefereeB", assistantRefereeB)

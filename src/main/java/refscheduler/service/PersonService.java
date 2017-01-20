@@ -54,6 +54,6 @@ public class PersonService {
 
         personRepository.save(person);
 
-        return person.getPersonId();
+        return person.getId();
     }
 }

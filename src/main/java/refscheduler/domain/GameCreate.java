@@ -18,7 +18,7 @@ public class GameCreate {
     private Long teamB;
 
     @NotNull
-    private Long timeslotId;
+    private Long timeslot;
 
     private Long headReferee;
 
@@ -53,11 +53,11 @@ public class GameCreate {
     }
 
     public Long getTimeslot() {
-        return timeslotId;
+        return timeslot;
     }
 
     public void setTimeslot(Long timeslotId) {
-        this.timeslotId = timeslotId;
+        this.timeslot = timeslotId;
     }
 
     public Long getHeadReferee() {
@@ -135,7 +135,7 @@ public class GameCreate {
         return new EqualsBuilder()
                 .append(teamA, that.teamA)
                 .append(teamB, that.teamB)
-                .append(timeslotId, that.timeslotId)
+                .append(timeslot, that.timeslot)
                 .append(headReferee, that.headReferee)
                 .append(assistantRefereeA, that.assistantRefereeA)
                 .append(assistantRefereeB, that.assistantRefereeB)
@@ -152,7 +152,7 @@ public class GameCreate {
         return new HashCodeBuilder(17, 37)
                 .append(teamA)
                 .append(teamB)
-                .append(timeslotId)
+                .append(timeslot)
                 .append(headReferee)
                 .append(assistantRefereeA)
                 .append(assistantRefereeB)
@@ -169,7 +169,7 @@ public class GameCreate {
         return new ToStringBuilder(this)
                 .append("teamA", teamA)
                 .append("teamB", teamB)
-                .append("time", timeslotId)
+                .append("time", timeslot)
                 .append("headReferee", headReferee)
                 .append("assistantRefereeA", assistantRefereeA)
                 .append("assistantRefereeB", assistantRefereeB)

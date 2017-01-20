@@ -17,7 +17,7 @@ public class GameEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "GAME_ID")
-    private Long gameId;
+    private Long id;
 
     @NotNull
     @ManyToOne
@@ -65,12 +65,12 @@ public class GameEntity {
     @Column(name = "PITCH")
     private Long pitch;
 
-    public Long getGameId() {
-        return gameId;
+    public Long getId() {
+        return id;
     }
 
-    public void setGameId(Long gameId) {
-        this.gameId = gameId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public TeamEntity getTeamA() {
@@ -170,7 +170,7 @@ public class GameEntity {
         GameEntity that = (GameEntity) o;
 
         return new EqualsBuilder()
-                .append(gameId, that.gameId)
+                .append(id, that.id)
                 .append(teamA, that.teamA)
                 .append(teamB, that.teamB)
                 .append(timeslot, that.timeslot)
@@ -188,7 +188,7 @@ public class GameEntity {
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .append(gameId)
+                .append(id)
                 .append(teamA)
                 .append(teamB)
                 .append(timeslot)
@@ -206,7 +206,7 @@ public class GameEntity {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("gameId", gameId)
+                .append("id", id)
                 .append("teamA", teamA)
                 .append("teamB", teamB)
                 .append("timeslot", timeslot)
