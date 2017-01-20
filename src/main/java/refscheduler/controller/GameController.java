@@ -7,6 +7,7 @@ import refscheduler.domain.GameGet;
 import refscheduler.service.GameService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Game controller.
@@ -26,5 +27,10 @@ public class GameController {
     @RequestMapping(path = "/game", method = RequestMethod.POST)
     public Long createGame(@RequestBody @Valid final GameCreate gameCreate) {
         return gameService.createGame(gameCreate);
+    }
+
+    @RequestMapping(path = "/games", method = RequestMethod.GET)
+    public List<GameGet> getGames() {
+        return gameService.getGames();
     }
 }

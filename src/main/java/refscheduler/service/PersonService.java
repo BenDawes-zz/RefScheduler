@@ -3,12 +3,15 @@ package refscheduler.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import refscheduler.util.DozerMapper;
 import refscheduler.domain.Level;
 import refscheduler.domain.PersonCreate;
 import refscheduler.domain.PersonGet;
 import refscheduler.entity.PersonEntity;
 import refscheduler.repository.PersonRepository;
+import refscheduler.util.DozerMapper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Person service.
@@ -26,6 +29,16 @@ public class PersonService {
         final PersonEntity entity = personRepository.findOne(personId);
 
         return mapper.map(entity, PersonGet.class);
+    }
+
+    public List<PersonGet> getAll() {
+        final Iterable<PersonEntity> entities = personRepository.findAll();
+        final List<PersonGet> persons = new ArrayList<>();
+
+        for (PersonEntity entity : entities) {
+            persons.add(mapper.map(entity, PersonGet.class));
+        }
+        return persons;
     }
 
     @Transactional

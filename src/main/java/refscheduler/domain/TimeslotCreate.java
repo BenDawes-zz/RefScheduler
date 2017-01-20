@@ -1,8 +1,12 @@
 package refscheduler.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.joda.time.DateTime;
+import refscheduler.util.JsonDateTimeDeserializer;
+import refscheduler.util.JsonDateTimeSerializer;
 
 import javax.validation.constraints.NotNull;
 
@@ -12,6 +16,8 @@ import javax.validation.constraints.NotNull;
 public class TimeslotCreate {
 
     @NotNull
+    @JsonSerialize(using = JsonDateTimeSerializer.class)
+    @JsonDeserialize(using = JsonDateTimeDeserializer.class)
     private DateTime time;
 
     public DateTime getTime() {

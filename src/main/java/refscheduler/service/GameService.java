@@ -2,14 +2,17 @@ package refscheduler.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import refscheduler.repository.TimeslotRepository;
-import refscheduler.util.DozerMapper;
 import refscheduler.domain.GameCreate;
 import refscheduler.domain.GameGet;
 import refscheduler.entity.GameEntity;
 import refscheduler.repository.GameRepository;
 import refscheduler.repository.PersonRepository;
 import refscheduler.repository.TeamRepository;
+import refscheduler.repository.TimeslotRepository;
+import refscheduler.util.DozerMapper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Game service.
@@ -86,5 +89,11 @@ public class GameService {
         final GameEntity entity = gameRepository.findOne(gameId);
 
         return mapper.map(entity, GameGet.class);
+    }
+
+    public List<GameGet> getGames() {
+        final Iterable<GameEntity> entities = gameRepository.findAll();
+
+        return mapper.map(entities, new ArrayList<GameGet>().getClass());
     }
 }

@@ -8,6 +8,8 @@ import refscheduler.entity.TimeslotEntity;
 import refscheduler.repository.TimeslotRepository;
 import refscheduler.util.DozerMapper;
 
+import java.util.List;
+
 /**
  * Timeslot service.
  */
@@ -27,12 +29,18 @@ public class TimeslotService {
 
         timeslotRepository.save(entity);
 
-        return entity.getTimeslotId();
+        return entity.getId();
     }
 
-    public TimeslotGet findTimeslot(final Long timeslotId) {
+    public TimeslotGet getTimeslot(final Long timeslotId) {
         final TimeslotEntity entity = timeslotRepository.findOne(timeslotId);
 
         return mapper.map(entity, TimeslotGet.class);
+    }
+
+    public List<TimeslotGet> getAllTimeslots() {
+        final List<TimeslotEntity> entities = timeslotRepository.findAll();
+
+        return mapper.map(entities, TimeslotGet.class);
     }
 }

@@ -1,10 +1,10 @@
 package refscheduler.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import refscheduler.entity.TimeslotEntity;
 
 /**
  * Repository for Timeslot entities.
  */
-public interface TimeslotRepository extends CrudRepository<TimeslotEntity, Long> {
+public interface TimeslotRepository extends JpaRepository<TimeslotEntity, Long> {
 }

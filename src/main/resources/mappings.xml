@@ -5,8 +5,8 @@
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
 
     <mapping>
-        <class-a>refscheduler.domain.GameGet</class-a>
-        <class-b>refscheduler.entity.GameEntity</class-b>
+        <class-a>refscheduler.domain.TimeslotGet</class-a>
+        <class-b>refscheduler.entity.TimeslotEntity</class-b>
 
         <field custom-converter="refscheduler.util.JodaDateTimeDateConvertor">
             <a>time</a>

@@ -1,6 +1,6 @@
 package refscheduler.util;
 
-import org.dozer.CustomConverter;
+import org.dozer.DozerConverter;
 import org.joda.time.DateTime;
 
 import java.util.Date;
@@ -8,20 +8,19 @@ import java.util.Date;
 /**
  * Converts between Joda DateTime and Java Date.
  */
-public class JodaDateTimeDateConvertor implements CustomConverter {
+public class JodaDateTimeDateConvertor extends DozerConverter<Date, DateTime> {
+
+    public JodaDateTimeDateConvertor(final Class<Date> prototypeA, final Class<DateTime> prototypeB) {
+        super(prototypeA, prototypeB);
+    }
 
     @Override
-    public Object convert(Object source, Object destination, Class<?> sourceClass, Class<?> destClass) {
-        if (source == null) {
-            return null;
-        }
+    public DateTime convertTo(final Date date, final DateTime dateTime) {
+        return new DateTime(date);
+    }
 
-        if (source instanceof DateTime) {
-            return ((DateTime) source).toDate();
-        } else if (source instanceof Date) {
-            return new DateTime(source);
-        }
-
-        return null;
+    @Override
+    public Date convertFrom(final DateTime dateTime, final Date date) {
+        return dateTime.toDate();
     }
 }

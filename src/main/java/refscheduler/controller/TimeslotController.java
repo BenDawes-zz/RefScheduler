@@ -7,6 +7,7 @@ import refscheduler.domain.TimeslotGet;
 import refscheduler.service.TimeslotService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Timeslot controller.
@@ -19,8 +20,13 @@ public class TimeslotController {
     private TimeslotService timeslotService;
 
     @RequestMapping(path = "/timeslot/{timeslotId}", method = RequestMethod.GET)
-    public TimeslotGet findTimeslot(@PathVariable("timeslotId") final Long timeslotId) {
-        return timeslotService.findTimeslot(timeslotId);
+    public TimeslotGet getTimeslot(@PathVariable("timeslotId") final Long timeslotId) {
+        return timeslotService.getTimeslot(timeslotId);
+    }
+
+    @RequestMapping(path = "/timeslots", method = RequestMethod.GET)
+    public List<TimeslotGet> getAllTimeslots() {
+        return timeslotService.getAllTimeslots();
     }
 
     @RequestMapping(value = "/timeslot", method = RequestMethod.POST)

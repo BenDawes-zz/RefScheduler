@@ -16,18 +16,18 @@ public class TimeslotEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TIMESLOT_ID")
-    private Long timeslotId;
+    private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "time")
     private Date time;
 
-    public Long getTimeslotId() {
-        return timeslotId;
+    public Long getId() {
+        return id;
     }
 
-    public void setTimeslotId(final Long timeslotId) {
-        this.timeslotId = timeslotId;
+    public void setId(final Long id) {
+        this.id = id;
     }
 
     public Date getTime() {
@@ -47,7 +47,7 @@ public class TimeslotEntity {
         final TimeslotEntity that = (TimeslotEntity) o;
 
         return new EqualsBuilder()
-                .append(timeslotId, that.timeslotId)
+                .append(id, that.id)
                 .append(time, that.time)
                 .isEquals();
     }
@@ -55,7 +55,7 @@ public class TimeslotEntity {
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .append(timeslotId)
+                .append(id)
                 .append(time)
                 .toHashCode();
     }

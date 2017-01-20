@@ -19,13 +19,18 @@ public class TeamAffiliationController {
     private TeamAffiliationService teamAffiliationService;
 
     @RequestMapping(path = "/affiliation/{affiliationId}", method = RequestMethod.GET)
-    public TeamAffiliationGet findTeamAffiliation(@PathVariable("affiliationId") final Long teamAffiliationId) {
-        return teamAffiliationService.findTeamAffiliation(teamAffiliationId);
+    public TeamAffiliationGet getTeamAffiliation(@PathVariable("affiliationId") final Long teamAffiliationId) {
+        return teamAffiliationService.getTeamAffiliation(teamAffiliationId);
     }
 
     @RequestMapping(path = "/affiliations/{teamId}", method = RequestMethod.GET)
-    public List<TeamAffiliationGet> findTeamAffiliationsByTeam(@PathVariable("teamId") final Long teamId) {
-        return teamAffiliationService.findAllAffiliationsByTeam(teamId);
+    public List<TeamAffiliationGet> getTeamAffiliationsByTeam(@PathVariable("teamId") final Long teamId) {
+        return teamAffiliationService.getAllAffiliationsByTeam(teamId);
+    }
+
+    @RequestMapping(path = "/affiliations", method = RequestMethod.GET)
+    public List<TeamAffiliationGet> getAllTeamAffiliations() {
+        return teamAffiliationService.getAllAffiliations();
     }
 
     @RequestMapping(path = "/affiliations", method = RequestMethod.POST)

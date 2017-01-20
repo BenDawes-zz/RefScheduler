@@ -9,18 +9,18 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
  */
 public class TeamGet {
 
-    private Long teamId;
+    private Long id;
 
     private String name;
 
     private String location;
 
-    public Long getTeamId() {
-        return teamId;
+    public Long getId() {
+        return id;
     }
 
-    public void setTeamId(Long teamId) {
-        this.teamId = teamId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

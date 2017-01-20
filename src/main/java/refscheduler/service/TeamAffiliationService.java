@@ -2,7 +2,6 @@ package refscheduler.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import refscheduler.util.DozerMapper;
 import refscheduler.domain.TeamAffiliationCreate;
 import refscheduler.domain.TeamAffiliationGet;
 import refscheduler.entity.TeamAffiliationEntity;
@@ -10,8 +9,8 @@ import refscheduler.entity.TeamEntity;
 import refscheduler.repository.PersonRepository;
 import refscheduler.repository.TeamAffiliationRepository;
 import refscheduler.repository.TeamRepository;
+import refscheduler.util.DozerMapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,24 +31,24 @@ public class TeamAffiliationService {
     @Autowired
     private TeamRepository teamRepository;
 
-    public TeamAffiliationGet findTeamAffiliation(final Long affiliationId) {
+    public TeamAffiliationGet getTeamAffiliation(final Long affiliationId) {
         final TeamAffiliationEntity entity = teamAffiliationRepository.findOne(affiliationId);
 
         return mapper.map(entity, TeamAffiliationGet.class);
     }
 
-    public List<TeamAffiliationGet> findAllAffiliationsByTeam(final Long teamId) {
+    public List<TeamAffiliationGet> getAllAffiliationsByTeam(final Long teamId) {
         final TeamEntity teamEntity = teamRepository.findOne(teamId);
 
         final List<TeamAffiliationEntity> entities = teamAffiliationRepository.findByTeam(teamEntity);
 
-        final List<TeamAffiliationGet> gets = new ArrayList<>();
+        return mapper.map(entities, TeamAffiliationGet.class);
+    }
 
-        for (TeamAffiliationEntity entity : entities) {
-            gets.add(mapper.map(entity, TeamAffiliationGet.class));
-        }
+    public List<TeamAffiliationGet> getAllAffiliations() {
+        final List<TeamAffiliationEntity> entities = teamAffiliationRepository.findAll();
 
-        return gets;
+        return mapper.map(entities, TeamAffiliationGet.class);
     }
 
     public Long createTeamAffiliation(final TeamAffiliationCreate affiliationCreate) {

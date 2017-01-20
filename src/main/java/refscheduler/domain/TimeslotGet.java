@@ -1,8 +1,12 @@
 package refscheduler.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.joda.time.DateTime;
+import refscheduler.util.JsonDateTimeDeserializer;
+import refscheduler.util.JsonDateTimeSerializer;
 
 import java.util.List;
 
@@ -11,18 +15,20 @@ import java.util.List;
  */
 public class TimeslotGet {
 
-    private Long timeslotId;
+    private Long id;
 
+    @JsonSerialize(using = JsonDateTimeSerializer.class)
+    @JsonDeserialize(using = JsonDateTimeDeserializer.class)
     private DateTime time;
 
     private List<GameGet> games;
 
-    public Long getTimeslotId() {
-        return timeslotId;
+    public Long getId() {
+        return id;
     }
 
-    public void setTimeslotId(final Long timeslotId) {
-        this.timeslotId = timeslotId;
+    public void setId(final Long id) {
+        this.id = id;
     }
 
     public DateTime getTime() {
@@ -50,7 +56,7 @@ public class TimeslotGet {
         final TimeslotGet that = (TimeslotGet) o;
 
         return new EqualsBuilder()
-                .append(timeslotId, that.timeslotId)
+                .append(id, that.id)
                 .append(time, that.time)
                 .append(games, that.games)
                 .isEquals();
@@ -59,7 +65,7 @@ public class TimeslotGet {
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .append(timeslotId)
+                .append(id)
                 .append(time)
                 .append(games)
                 .toHashCode();

@@ -1,26 +1,33 @@
 package refscheduler.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import refscheduler.domain.TeamCreate;
 import refscheduler.domain.TeamGet;
 import refscheduler.service.TeamService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Team controller.
  */
 @RestController
-@RequestMapping(produces = "application/json")
+@RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class TeamController {
 
     @Autowired
     private TeamService teamService;
 
     @RequestMapping(path = "/team/{teamId}", method = RequestMethod.GET)
-    public TeamGet findTeam(@PathVariable("teamId") final Long teamId) {
-        return teamService.findTeam(teamId);
+    public TeamGet getTeam(@PathVariable("teamId") final Long teamId) {
+        return teamService.getTeam(teamId);
+    }
+
+    @RequestMapping(path = "/teams", method = RequestMethod.GET)
+    public List<TeamGet> getTeams() {
+        return teamService.getTeams();
     }
 
     @RequestMapping(value = "/team", method = RequestMethod.POST)

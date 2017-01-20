@@ -9,7 +9,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
  */
 public class TeamAffiliationGet implements Comparable<TeamAffiliationGet> {
 
-    private Long affiliationId;
+    private Long id;
 
     private PersonGet person;
 
@@ -17,12 +17,12 @@ public class TeamAffiliationGet implements Comparable<TeamAffiliationGet> {
 
     private AffiliationType affiliation;
 
-    public Long getAffiliationId() {
-        return affiliationId;
+    public Long getId() {
+        return id;
     }
 
-    public void setAffiliationId(Long affiliationId) {
-        this.affiliationId = affiliationId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public PersonGet getPerson() {

@@ -14,7 +14,7 @@ import refscheduler.util.JsonDateTimeSerializer;
  */
 public class GameGet {
 
-    private Long gameId;
+    private Long id;
 
     private TeamGet teamA;
 
@@ -40,12 +40,12 @@ public class GameGet {
 
     private Long pitch;
 
-    public Long getGameId() {
-        return gameId;
+    public Long getId() {
+        return id;
     }
 
-    public void setGameId(Long gameId) {
-        this.gameId = gameId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public TeamGet getTeamA() {
@@ -145,7 +145,7 @@ public class GameGet {
         GameGet gameGet = (GameGet) o;
 
         return new EqualsBuilder()
-                .append(gameId, gameGet.gameId)
+                .append(id, gameGet.id)
                 .append(teamA, gameGet.teamA)
                 .append(teamB, gameGet.teamB)
                 .append(time, gameGet.time)
@@ -163,7 +163,7 @@ public class GameGet {
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .append(gameId)
+                .append(id)
                 .append(teamA)
                 .append(teamB)
                 .append(time)
@@ -181,7 +181,7 @@ public class GameGet {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("gameId", gameId)
+                .append("id", id)
                 .append("teamA", teamA)
                 .append("teamB", teamB)
                 .append("time", time)

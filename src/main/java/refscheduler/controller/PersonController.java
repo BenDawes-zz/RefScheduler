@@ -10,7 +10,7 @@ import refscheduler.service.SchedulingEngine;
 import refscheduler.service.TeamAffiliationService;
 
 import javax.validation.Valid;
-import java.util.Collections;
+import java.util.List;
 
 /**
  * Person controller.
@@ -34,9 +34,14 @@ public class PersonController {
     @RequestMapping(path = "/person/{personId}", method = RequestMethod.GET)
     public PersonGet getPerson(@PathVariable("personId") final Long personId) {
 
-        schedulingEngine.scheduleGames(Collections.singletonList(gameService.getGame(1L)), teamAffiliationService.findAllAffiliationsByTeam(1L));
+        //schedulingEngine.scheduleGames(Collections.singletonList(gameService.getGame(1L)), teamAffiliationService.getAllAffiliationsByTeam(1L));
 
         return personService.getPerson(personId);
+    }
+
+    @RequestMapping(path = "/persons", method = RequestMethod.GET)
+    public List<PersonGet> getAllPersons() {
+        return personService.getAll();
     }
 
     @RequestMapping(path = "/person", method = RequestMethod.POST)
