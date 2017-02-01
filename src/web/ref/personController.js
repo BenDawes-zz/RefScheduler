@@ -21,7 +21,7 @@ var myApp = angular.module('refScheduler', []).controller('personCtrl', function
             data: {
                 firstName: $scope.firstName,
                 lastName: $scope.lastName,
-                email: $scope.email,
+                emailAddress: $scope.email,
                 headRefereeLevel: $scope.hrLevel,
                 assistantRefereeLevel: $scope.arLevel,
                 snitchRefereeLevel: $scope.srLevel,

@@ -51,6 +51,7 @@ public class PersonService {
         person.setHeadRefereeLevel(personCreate.getHeadRefereeLevel() == null ? Level.LEVEL_5 : personCreate.getHeadRefereeLevel());
         person.setAssistantRefereeLevel(personCreate.getAssistantRefereeLevel() == null ? Level.LEVEL_5 : personCreate.getAssistantRefereeLevel());
         person.setSnitchRefereeLevel(personCreate.getSnitchRefereeLevel() == null ? Level.LEVEL_5 : personCreate.getSnitchRefereeLevel());
+        person.setSnitch(personCreate.getSnitch());
 
         personRepository.save(person);
 
