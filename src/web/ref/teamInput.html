@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="refScheduler" ng-controller="personCtrl">
+<html lang="en" ng-app="refScheduler" ng-controller="teamsCtrl">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Meta, title, CSS, favicons, etc. -->
@@ -104,7 +104,7 @@
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="x_panel">
                                     <div class="x_title">
-                                        <h2>Person <small>create a new person</small></h2>
+                                        <h2>Team <small>create a new team</small></h2>
                                         <ul class="nav navbar-right panel_toolbox">
                                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                             </li>
@@ -113,64 +113,19 @@
                                     </div>
                                     <div class="x_content">
                                         <br />
-                                        <form id="person-create-edit" ng-submit="submit()" data-parsley-validate class="form-horizontal form-label-left">
-
+                                        <form id="team-create-edit" ng-submit="submit()" data-parsley-validate class="form-horizontal form-label-left">
                                             <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" ng-model="firstName" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                                    <input type="text" ng-model="name" id="name" required="required" class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="location">Location <span class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" ng-model="lastName" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" ng-model="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hrLevel">Head Referee Level: <span class="required">*</span></label>
-                                                <select ng-model="hrLevel" id="hrLevel" class="form-control col-md-6 col-sm-6 col-xs-12" required="required">
-                                                    <option value="LEVEL_1">Level 1</option>
-                                                    <option value="LEVEL_2">Level 2</option>
-                                                    <option value="LEVEL_3">Level 3</option>
-                                                    <option value="LEVEL_4">Level 4</option>
-                                                    <option value="LEVEL_5" selected="selected">Level 5</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="arLevel">Assistant Referee Level: <span class="required">*</span></label>
-                                                <select ng-model="arLevel" id="arLevel" class="form-control col-md-6 col-sm-6 col-xs-12" required="required">
-                                                    <option value="LEVEL_1">Level 1</option>
-                                                    <option value="LEVEL_2">Level 2</option>
-                                                    <option value="LEVEL_3">Level 3</option>
-                                                    <option value="LEVEL_4">Level 4</option>
-                                                    <option value="LEVEL_5" selected="selected">Level 5</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="srLevel">Snitch Referee Level: <span class="required">*</span></label>
-                                                <select ng-model="srLevel" id="srLevel" class="form-control col-md-6 col-sm-6 col-xs-12" required="required">
-                                                    <option value="LEVEL_1">Level 1</option>
-                                                    <option value="LEVEL_2">Level 2</option>
-                                                    <option value="LEVEL_3">Level 3</option>
-                                                    <option value="LEVEL_4">Level 4</option>
-                                                    <option value="LEVEL_5" selected="selected">Level 5</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" value="" ng-model="snitch"> Snitch?
-                                                    </label>
+                                                    <input type="text" ng-model="location" id="location" required="required" class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
                                             <div class="ln_solid"></div>
@@ -235,7 +190,7 @@
         <script src="../vendors/starrr/dist/starrr.js"></script>
         <!-- AngularJS -->
         <script src="../vendors/angular/angular.min.js"></script>
-        <script src="personController.js"></script>
+        <script src="teamController.js"></script>
 
         <!-- Custom Theme Scripts -->
         <script src="../build/js/custom.min.js"></script>
