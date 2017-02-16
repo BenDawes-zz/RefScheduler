@@ -19,17 +19,17 @@ public class TimeslotController {
     @Autowired
     private TimeslotService timeslotService;
 
-    @RequestMapping(path = "/timeslot/{timeslotId}", method = RequestMethod.GET)
+    @GetMapping(path = "/timeslot/{timeslotId}")
     public TimeslotGet getTimeslot(@PathVariable("timeslotId") final Long timeslotId) {
         return timeslotService.getTimeslot(timeslotId);
     }
 
-    @RequestMapping(path = "/timeslots", method = RequestMethod.GET)
+    @GetMapping(path = "/timeslots")
     public List<TimeslotGet> getAllTimeslots() {
         return timeslotService.getAllTimeslots();
     }
 
-    @RequestMapping(value = "/timeslot", method = RequestMethod.POST)
+    @PostMapping(path = "/timeslot")
     public Long createTimeslot(@RequestBody @Valid final TimeslotCreate timeslotCreate) {
         return timeslotService.createTimeslot(timeslotCreate);
     }

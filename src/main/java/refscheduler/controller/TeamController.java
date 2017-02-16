@@ -20,17 +20,17 @@ public class TeamController {
     @Autowired
     private TeamService teamService;
 
-    @RequestMapping(path = "/team/{teamId}", method = RequestMethod.GET)
+    @GetMapping(path = "/team/{teamId}")
     public TeamGet getTeam(@PathVariable("teamId") final Long teamId) {
         return teamService.getTeam(teamId);
     }
 
-    @RequestMapping(path = "/teams", method = RequestMethod.GET)
+    @GetMapping(path = "/teams")
     public List<TeamGet> getTeams() {
         return teamService.getTeams();
     }
 
-    @RequestMapping(value = "/team", method = RequestMethod.POST)
+    @PostMapping(path = "/team")
     public Long createTeam(@RequestBody @Valid final TeamCreate teamCreate) {
         return teamService.createTeam(teamCreate);
     }

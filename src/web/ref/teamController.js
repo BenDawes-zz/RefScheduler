@@ -19,8 +19,10 @@ var myApp = angular.module('refScheduler', []).controller('teamsCtrl', function(
             }
           }).then(function success(response) {
                 $scope.response = response.data;
+                window.alert("Team created")
           }, function error(response) {
                 $scope.errors = response.status;
+                window.alert("Create failed")
           });
         };
 });

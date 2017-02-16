@@ -19,17 +19,17 @@ public class GameController {
     @Autowired
     private GameService gameService;
 
-    @RequestMapping(path = "/game/{gameId}", method = RequestMethod.GET)
+    @GetMapping(path = "/game/{gameId}")
     public GameGet getGame(@PathVariable("gameId") final Long gameId) {
         return gameService.getGame(gameId);
     }
 
-    @RequestMapping(path = "/game", method = RequestMethod.POST)
+    @PostMapping(path = "/game")
     public Long createGame(@RequestBody @Valid final GameCreate gameCreate) {
         return gameService.createGame(gameCreate);
     }
 
-    @RequestMapping(path = "/games", method = RequestMethod.GET)
+    @GetMapping(path = "/games")
     public List<GameGet> getAllGames() {
         return gameService.getGames();
     }

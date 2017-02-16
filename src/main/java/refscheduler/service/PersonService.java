@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import refscheduler.domain.Level;
 import refscheduler.domain.PersonCreate;
 import refscheduler.domain.PersonGet;
+import refscheduler.domain.PersonUpdate;
 import refscheduler.entity.PersonEntity;
 import refscheduler.repository.PersonRepository;
 import refscheduler.util.DozerMapper;
@@ -56,5 +57,19 @@ public class PersonService {
         personRepository.save(person);
 
         return person.getId();
+    }
+
+    @Transactional
+    public Long updatePerson(final PersonUpdate personUpdate) {
+        final PersonEntity personEntity = mapper.map(personUpdate, PersonEntity.class);
+
+        personRepository.save(personEntity);
+
+        return personEntity.getId();
+    }
+
+    @Transactional
+    public void deletePerson(final Long personId) {
+        personRepository.delete(personId);
     }
 }

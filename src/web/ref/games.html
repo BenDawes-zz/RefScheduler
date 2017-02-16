@@ -120,8 +120,6 @@
                                             <th class="column-title" style="display: table-cell;">Snitch Referee</th>
                                             <th class="column-title" style="display: table-cell;">Snitch</th>
                                             <th class="column-title" style="display: table-cell;">Pitch</th>
-                                            <th class="column-title no-link last" style="display: table-cell;"><span class="nobr">Action</span>
-                                            </th>
                                             <th class="bulk-actions" colspan="7" style="display: none;">
                                                 <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt">1 Records Selected</span> ) <i class="fa fa-chevron-down"></i></a>
                                             </th>
@@ -143,8 +141,6 @@
                                             <td class=" ">{{game.snitchReferee.firstName + " " + game.snitchReferee.lastName}} </td>
                                             <td class=" ">{{game.snitch.firstName + " " + game.snitch.lastName}} </td>
                                             <td class=" ">{{game.pitch}} </td>
-                                            <td class=" last"><a href="/game/{{game.id}}">View</a>
-                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -178,6 +174,7 @@
 <script src="../vendors/nprogress/nprogress.js"></script>
 <!-- AngularJS -->
 <script src="../vendors/angular/angular.min.js"></script>
+<script src="../vendors/angular/angular-route.js"></script>
 <script src="gameController.js"></script>
 
 <!-- Custom Theme Scripts -->

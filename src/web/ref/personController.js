@@ -29,8 +29,21 @@ var myApp = angular.module('refScheduler', []).controller('personCtrl', function
             }
           }).then(function success(response) {
                 $scope.response = response.data;
+                window.alert("Person created")
           }, function error(response) {
                 $scope.errors = response.status;
+                window.alert("Created failed")
           });
         };
+
+        $scope.delete = function(person) {
+            $http({
+                method: 'DELETE',
+                url: 'http://localhost:8090/person/' + person.id
+            }).then(function success(response) {
+                $scope.persons.splice($scope.persons.indexOf(person), 1);
+            }, function error(response) {
+                window.alert("Delete failed!")
+            });
+        }
 });

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import refscheduler.domain.PersonCreate;
 import refscheduler.domain.PersonGet;
+import refscheduler.domain.PersonUpdate;
 import refscheduler.service.GameService;
 import refscheduler.service.PersonService;
 import refscheduler.service.SchedulingEngine;
@@ -31,21 +32,29 @@ public class PersonController {
     @Autowired
     private SchedulingEngine schedulingEngine;
 
-    @RequestMapping(path = "/person/{personId}", method = RequestMethod.GET)
+    @GetMapping(path = "/person/{personId}")
     public PersonGet getPerson(@PathVariable("personId") final Long personId) {
-
-        //schedulingEngine.scheduleGames(Collections.singletonList(gameService.getGame(1L)), teamAffiliationService.getAllAffiliationsByTeam(1L));
-
         return personService.getPerson(personId);
     }
 
-    @RequestMapping(path = "/persons", method = RequestMethod.GET)
+    @PutMapping(path = "/person/{personId}")
+    public Long updatePerson(@PathVariable("personId") final Long personId,
+                                  final PersonUpdate personUpdate) {
+        return personService.updatePerson(personUpdate);
+    }
+
+    @GetMapping(path = "/persons")
     public List<PersonGet> getAllPersons() {
         return personService.getAll();
     }
 
-    @RequestMapping(path = "/person", method = RequestMethod.POST)
+    @PostMapping(path = "/person")
     public Long createPerson(@RequestBody @Valid final PersonCreate personCreate) {
         return personService.createPerson(personCreate);
+    }
+
+    @DeleteMapping(path = "/person/{personId}")
+    public void deletePerson(@PathVariable("personId") final Long personId) {
+        personService.deletePerson(personId);
     }
 }
