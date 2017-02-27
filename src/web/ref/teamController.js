@@ -1,5 +1,6 @@
-var myApp = angular.module('refScheduler', []).controller('teamsCtrl', function($scope, $http) {
-    $http.get('http://localhost:8090/teams')
+var myApp = angular.module('refScheduler', [])
+    .controller('teamsCtrl', ['$scope', 'dataService', function($scope, dataService) {
+    dataService.get('teams')
         .then(function success(response){
             $scope.teams = response.data;
         }, function error(response) {
@@ -10,14 +11,12 @@ var myApp = angular.module('refScheduler', []).controller('teamsCtrl', function(
         $scope.location = '';
 
         $scope.submit = function() {
-          $http({
-            method: 'POST',
-            url: 'http://localhost:8090/team',
-            data: {
+          dataService.post('team',
+            {
                 name: $scope.name,
                 location: $scope.location
-            }
-          }).then(function success(response) {
+            })
+          .then(function success(response) {
                 $scope.response = response.data;
                 window.alert("Team created")
           }, function error(response) {
@@ -25,4 +24,4 @@ var myApp = angular.module('refScheduler', []).controller('teamsCtrl', function(
                 window.alert("Create failed")
           });
         };
-});
+}]);

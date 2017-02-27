@@ -1,5 +1,6 @@
-var myApp = angular.module('refScheduler', []).controller('personCtrl', function($scope, $http) {
-    $http.get('http://localhost:8090/persons')
+var myApp = angular.module('refScheduler', [])
+    .controller('personCtrl', ['$scope', 'dataService', function($scope, dataService) {
+    dataService.get('persons')
         .then(function success(response){
             $scope.persons = response.data;
         }, function error(response) {
@@ -15,10 +16,8 @@ var myApp = angular.module('refScheduler', []).controller('personCtrl', function
         $scope.snitch = '';
 
         $scope.submit = function() {
-          $http({
-            method: 'POST',
-            url: 'http://localhost:8090/person',
-            data: {
+          dataService.post('person',
+            {
                 firstName: $scope.firstName,
                 lastName: $scope.lastName,
                 emailAddress: $scope.email,
@@ -26,8 +25,8 @@ var myApp = angular.module('refScheduler', []).controller('personCtrl', function
                 assistantRefereeLevel: $scope.arLevel,
                 snitchRefereeLevel: $scope.srLevel,
                 snitch: $scope.snitch
-            }
-          }).then(function success(response) {
+            })
+          .then(function success(response) {
                 $scope.response = response.data;
                 window.alert("Person created")
           }, function error(response) {
@@ -37,13 +36,11 @@ var myApp = angular.module('refScheduler', []).controller('personCtrl', function
         };
 
         $scope.delete = function(person) {
-            $http({
-                method: 'DELETE',
-                url: 'http://localhost:8090/person/' + person.id
-            }).then(function success(response) {
+            dataService.delete('person/' + person.id)
+            .then(function success(response) {
                 $scope.persons.splice($scope.persons.indexOf(person), 1);
             }, function error(response) {
                 window.alert("Delete failed!")
             });
         }
-});
+}]);
