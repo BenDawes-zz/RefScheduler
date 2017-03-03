@@ -2,8 +2,7 @@ package refscheduler.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import refscheduler.domain.TimeslotCreate;
-import refscheduler.domain.TimeslotGet;
+import refscheduler.domain.Timeslot;
 import refscheduler.service.TimeslotService;
 
 import javax.validation.Valid;
@@ -20,17 +19,17 @@ public class TimeslotController {
     private TimeslotService timeslotService;
 
     @GetMapping(path = "/timeslot/{timeslotId}")
-    public TimeslotGet getTimeslot(@PathVariable("timeslotId") final Long timeslotId) {
+    public Timeslot getTimeslot(@PathVariable("timeslotId") final Long timeslotId) {
         return timeslotService.getTimeslot(timeslotId);
     }
 
     @GetMapping(path = "/timeslots")
-    public List<TimeslotGet> getAllTimeslots() {
+    public List<Timeslot> getAllTimeslots() {
         return timeslotService.getAllTimeslots();
     }
 
     @PostMapping(path = "/timeslot")
-    public Long createTimeslot(@RequestBody @Valid final TimeslotCreate timeslotCreate) {
-        return timeslotService.createTimeslot(timeslotCreate);
+    public Long createTimeslot(@RequestBody @Valid final Timeslot timeslot) {
+        return timeslotService.save(timeslot);
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Timeslot GET DTO.
  */
-public class TimeslotGet {
+public class Timeslot {
 
     private Long id;
 
@@ -21,7 +21,7 @@ public class TimeslotGet {
     @JsonDeserialize(using = JsonDateTimeDeserializer.class)
     private DateTime time;
 
-    private List<GameGet> games;
+    private List<Game> games;
 
     public Long getId() {
         return id;
@@ -39,11 +39,11 @@ public class TimeslotGet {
         this.time = time;
     }
 
-    public List<GameGet> getGames() {
+    public List<Game> getGames() {
         return games;
     }
 
-    public void setGames(final List<GameGet> games) {
+    public void setGames(final List<Game> games) {
         this.games = games;
     }
 
@@ -53,7 +53,7 @@ public class TimeslotGet {
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        final TimeslotGet that = (TimeslotGet) o;
+        final Timeslot that = (Timeslot) o;
 
         return new EqualsBuilder()
                 .append(id, that.id)

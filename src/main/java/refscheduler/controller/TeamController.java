@@ -3,8 +3,7 @@ package refscheduler.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import refscheduler.domain.TeamCreate;
-import refscheduler.domain.TeamGet;
+import refscheduler.domain.Team;
 import refscheduler.service.TeamService;
 
 import javax.validation.Valid;
@@ -21,17 +20,17 @@ public class TeamController {
     private TeamService teamService;
 
     @GetMapping(path = "/team/{teamId}")
-    public TeamGet getTeam(@PathVariable("teamId") final Long teamId) {
+    public Team getTeam(@PathVariable("teamId") final Long teamId) {
         return teamService.getTeam(teamId);
     }
 
     @GetMapping(path = "/teams")
-    public List<TeamGet> getTeams() {
+    public List<Team> getTeams() {
         return teamService.getTeams();
     }
 
     @PostMapping(path = "/team")
-    public Long createTeam(@RequestBody @Valid final TeamCreate teamCreate) {
-        return teamService.createTeam(teamCreate);
+    public Long createTeam(@RequestBody @Valid final Team team) {
+        return teamService.save(team);
     }
 }

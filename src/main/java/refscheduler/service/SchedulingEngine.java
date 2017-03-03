@@ -1,10 +1,10 @@
 package refscheduler.service;
 
 import org.springframework.stereotype.Service;
-import refscheduler.domain.GameGet;
-import refscheduler.domain.PersonGet;
-import refscheduler.domain.TeamAffiliationGet;
-import refscheduler.domain.TimeslotGet;
+import refscheduler.domain.Game;
+import refscheduler.domain.Person;
+import refscheduler.domain.TeamAffiliation;
+import refscheduler.domain.Timeslot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,17 +18,17 @@ public class SchedulingEngine {
 
     private static final int NUMBER_OF_ARS = 3;
 
-    public List<TimeslotGet> scheduleGames(final List<TimeslotGet> timeslots, final List<TeamAffiliationGet> affiliations) {
+    public List<Timeslot> scheduleGames(final List<Timeslot> timeslots, final List<TeamAffiliation> affiliations) {
 
-        for (TimeslotGet timeslot : timeslots) {
-            List<PersonGet> usedPeople = new ArrayList<>();
+        for (Timeslot timeslot : timeslots) {
+            List<Person> usedPeople = new ArrayList<>();
 
-            for (GameGet game : timeslot.getGames()) {
-                List<PersonGet> unaffiliatedPeople = affiliations.stream()
+            for (Game game : timeslot.getGames()) {
+                List<Person> unaffiliatedPeople = affiliations.stream()
                         .filter(affiliation -> !affiliation.getTeam().equals(game.getTeamA())
                                 && !affiliation.getTeam().equals(game.getTeamB()))
                         .sorted()
-                        .map(TeamAffiliationGet::getPerson)
+                        .map(TeamAffiliation::getPerson)
                         .filter(personGet -> !usedPeople.contains(personGet))
                         .collect(Collectors.toList());
 

@@ -2,8 +2,7 @@ package refscheduler.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import refscheduler.domain.TimeslotCreate;
-import refscheduler.domain.TimeslotGet;
+import refscheduler.domain.Timeslot;
 import refscheduler.entity.TimeslotEntity;
 import refscheduler.repository.TimeslotRepository;
 import refscheduler.util.DozerMapper;
@@ -22,25 +21,23 @@ public class TimeslotService {
     @Autowired
     private TimeslotRepository timeslotRepository;
 
-    public Long createTimeslot(final TimeslotCreate timeslotCreate) {
-        final TimeslotEntity entity = new TimeslotEntity();
-
-        entity.setTime(timeslotCreate.getTime().toDate());
+    public Long save(final Timeslot timeslot) {
+        final TimeslotEntity entity = mapper.map(timeslot, TimeslotEntity.class);
 
         timeslotRepository.save(entity);
 
         return entity.getId();
     }
 
-    public TimeslotGet getTimeslot(final Long timeslotId) {
+    public Timeslot getTimeslot(final Long timeslotId) {
         final TimeslotEntity entity = timeslotRepository.findOne(timeslotId);
 
-        return mapper.map(entity, TimeslotGet.class);
+        return mapper.map(entity, Timeslot.class);
     }
 
-    public List<TimeslotGet> getAllTimeslots() {
+    public List<Timeslot> getAllTimeslots() {
         final List<TimeslotEntity> entities = timeslotRepository.findAll();
 
-        return mapper.map(entities, TimeslotGet.class);
+        return mapper.map(entities, Timeslot.class);
     }
 }

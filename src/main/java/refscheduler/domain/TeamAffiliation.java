@@ -7,13 +7,13 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 /**
  * Team Affiliation Get DTO.
  */
-public class TeamAffiliationGet implements Comparable<TeamAffiliationGet> {
+public class TeamAffiliation implements Comparable<TeamAffiliation> {
 
     private Long id;
 
-    private PersonGet person;
+    private Person person;
 
-    private TeamGet team;
+    private Team team;
 
     private AffiliationType affiliation;
 
@@ -25,19 +25,19 @@ public class TeamAffiliationGet implements Comparable<TeamAffiliationGet> {
         this.id = id;
     }
 
-    public PersonGet getPerson() {
+    public Person getPerson() {
         return person;
     }
 
-    public void setPerson(PersonGet person) {
+    public void setPerson(Person person) {
         this.person = person;
     }
 
-    public TeamGet getTeam() {
+    public Team getTeam() {
         return team;
     }
 
-    public void setTeam(TeamGet team) {
+    public void setTeam(Team team) {
         this.team = team;
     }
 
@@ -65,7 +65,7 @@ public class TeamAffiliationGet implements Comparable<TeamAffiliationGet> {
     }
 
     @Override
-    public int compareTo(final TeamAffiliationGet that) {
+    public int compareTo(final TeamAffiliation that) {
         if (this.equals(that)) {
             return 0;
         }

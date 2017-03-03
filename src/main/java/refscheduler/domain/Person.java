@@ -1,20 +1,21 @@
 package refscheduler.domain;
 
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-import javax.validation.constraints.NotNull;
+import java.util.Random;
 
 /**
- * Person Create DTO.
+ * Person Get DTO.
  */
-public class PersonCreate {
+public class Person implements Comparable<Person> {
 
-    @NotNull
+    private Long id;
+
     private String firstName;
 
-    @NotNull
     private String lastName;
 
     private String emailAddress;
@@ -26,6 +27,14 @@ public class PersonCreate {
     private Level snitchRefereeLevel;
 
     private Boolean snitch;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -96,5 +105,31 @@ public class PersonCreate {
     @Override
     public String toString() {
         return ReflectionToStringBuilder.reflectionToString(this);
+    }
+
+    @Override
+    public int compareTo(final Person that) {
+        if (this.equals(that)) {
+            return 0;
+        }
+
+        final int hrComparison = this.headRefereeLevel.compareTo(that.headRefereeLevel);
+        final int arComparison = this.assistantRefereeLevel.compareTo(that.assistantRefereeLevel);
+        final int srComparison = this.snitchRefereeLevel.compareTo(that.snitchRefereeLevel);
+
+        if (hrComparison == 0) {
+            if (arComparison == 0) {
+                if (srComparison == 0) {
+                    Random random = new Random();
+                    return random.nextInt(3) - 1;
+                } else {
+                    return srComparison;
+                }
+            } else {
+                return arComparison;
+            }
+        } else {
+            return hrComparison;
+        }
     }
 }

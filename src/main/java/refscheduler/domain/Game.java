@@ -4,115 +4,110 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.validation.constraints.NotNull;
-
 /**
- * Game CREATE DTO.
+ * Game GET DTO.
  */
-public class GameCreate {
+public class Game {
 
-    @NotNull
-    private Long teamA;
+    private Long id;
 
-    @NotNull
-    private Long teamB;
+    private Team teamA;
 
-    @NotNull
-    private Long timeslot;
+    private Team teamB;
 
-    private Long headReferee;
+    private Person headReferee;
 
-    private Long assistantRefereeA;
+    private Person assistantRefereeA;
 
-    private Long assistantRefereeB;
+    private Person assistantRefereeB;
 
-    private Long assistantRefereeC;
+    private Person assistantRefereeC;
 
-    private Long assistantRefereeD;
+    private Person assistantRefereeD;
 
-    private Long snitchReferee;
+    private Person snitchReferee;
 
-    private Long snitch;
+    private Person snitch;
 
     private Long pitch;
 
-    public Long getTeamA() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Team getTeamA() {
         return teamA;
     }
 
-    public void setTeamA(Long teamA) {
+    public void setTeamA(Team teamA) {
         this.teamA = teamA;
     }
 
-    public Long getTeamB() {
+    public Team getTeamB() {
         return teamB;
     }
 
-    public void setTeamB(Long teamB) {
+    public void setTeamB(Team teamB) {
         this.teamB = teamB;
     }
 
-    public Long getTimeslot() {
-        return timeslot;
-    }
-
-    public void setTimeslot(Long timeslotId) {
-        this.timeslot = timeslotId;
-    }
-
-    public Long getHeadReferee() {
+    public Person getHeadReferee() {
         return headReferee;
     }
 
-    public void setHeadReferee(Long headReferee) {
+    public void setHeadReferee(Person headReferee) {
         this.headReferee = headReferee;
     }
 
-    public Long getAssistantRefereeA() {
+    public Person getAssistantRefereeA() {
         return assistantRefereeA;
     }
 
-    public void setAssistantRefereeA(Long assistantRefereeA) {
+    public void setAssistantRefereeA(Person assistantRefereeA) {
         this.assistantRefereeA = assistantRefereeA;
     }
 
-    public Long getAssistantRefereeB() {
+    public Person getAssistantRefereeB() {
         return assistantRefereeB;
     }
 
-    public void setAssistantRefereeB(Long assistantRefereeB) {
+    public void setAssistantRefereeB(Person assistantRefereeB) {
         this.assistantRefereeB = assistantRefereeB;
     }
 
-    public Long getAssistantRefereeC() {
+    public Person getAssistantRefereeC() {
         return assistantRefereeC;
     }
 
-    public void setAssistantRefereeC(Long assistantRefereeC) {
+    public void setAssistantRefereeC(Person assistantRefereeC) {
         this.assistantRefereeC = assistantRefereeC;
     }
 
-    public Long getAssistantRefereeD() {
+    public Person getAssistantRefereeD() {
         return assistantRefereeD;
     }
 
-    public void setAssistantRefereeD(Long assistantRefereeD) {
+    public void setAssistantRefereeD(Person assistantRefereeD) {
         this.assistantRefereeD = assistantRefereeD;
     }
 
-    public Long getSnitchReferee() {
+    public Person getSnitchReferee() {
         return snitchReferee;
     }
 
-    public void setSnitchReferee(Long snitchReferee) {
+    public void setSnitchReferee(Person snitchReferee) {
         this.snitchReferee = snitchReferee;
     }
 
-    public Long getSnitch() {
+    public Person getSnitch() {
         return snitch;
     }
 
-    public void setSnitch(Long snitch) {
+    public void setSnitch(Person snitch) {
         this.snitch = snitch;
     }
 
@@ -130,29 +125,29 @@ public class GameCreate {
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        GameCreate that = (GameCreate) o;
+        Game game = (Game) o;
 
         return new EqualsBuilder()
-                .append(teamA, that.teamA)
-                .append(teamB, that.teamB)
-                .append(timeslot, that.timeslot)
-                .append(headReferee, that.headReferee)
-                .append(assistantRefereeA, that.assistantRefereeA)
-                .append(assistantRefereeB, that.assistantRefereeB)
-                .append(assistantRefereeC, that.assistantRefereeC)
-                .append(assistantRefereeD, that.assistantRefereeD)
-                .append(snitchReferee, that.snitchReferee)
-                .append(snitch, that.snitch)
-                .append(pitch, that.pitch)
+                .append(id, game.id)
+                .append(teamA, game.teamA)
+                .append(teamB, game.teamB)
+                .append(headReferee, game.headReferee)
+                .append(assistantRefereeA, game.assistantRefereeA)
+                .append(assistantRefereeB, game.assistantRefereeB)
+                .append(assistantRefereeC, game.assistantRefereeC)
+                .append(assistantRefereeD, game.assistantRefereeD)
+                .append(snitchReferee, game.snitchReferee)
+                .append(snitch, game.snitch)
+                .append(pitch, game.pitch)
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
+                .append(id)
                 .append(teamA)
                 .append(teamB)
-                .append(timeslot)
                 .append(headReferee)
                 .append(assistantRefereeA)
                 .append(assistantRefereeB)
@@ -167,9 +162,9 @@ public class GameCreate {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
+                .append("id", id)
                 .append("teamA", teamA)
                 .append("teamB", teamB)
-                .append("time", timeslot)
                 .append("headReferee", headReferee)
                 .append("assistantRefereeA", assistantRefereeA)
                 .append("assistantRefereeB", assistantRefereeB)

@@ -2,8 +2,7 @@ package refscheduler.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import refscheduler.domain.TeamAffiliationCreate;
-import refscheduler.domain.TeamAffiliationGet;
+import refscheduler.domain.TeamAffiliation;
 import refscheduler.entity.TeamAffiliationEntity;
 import refscheduler.entity.TeamEntity;
 import refscheduler.repository.PersonRepository;
@@ -31,32 +30,28 @@ public class TeamAffiliationService {
     @Autowired
     private TeamRepository teamRepository;
 
-    public TeamAffiliationGet getTeamAffiliation(final Long affiliationId) {
+    public TeamAffiliation getTeamAffiliation(final Long affiliationId) {
         final TeamAffiliationEntity entity = teamAffiliationRepository.findOne(affiliationId);
 
-        return mapper.map(entity, TeamAffiliationGet.class);
+        return mapper.map(entity, TeamAffiliation.class);
     }
 
-    public List<TeamAffiliationGet> getAllAffiliationsByTeam(final Long teamId) {
+    public List<TeamAffiliation> getAllAffiliationsByTeam(final Long teamId) {
         final TeamEntity teamEntity = teamRepository.findOne(teamId);
 
         final List<TeamAffiliationEntity> entities = teamAffiliationRepository.findByTeam(teamEntity);
 
-        return mapper.map(entities, TeamAffiliationGet.class);
+        return mapper.map(entities, TeamAffiliation.class);
     }
 
-    public List<TeamAffiliationGet> getAllAffiliations() {
+    public List<TeamAffiliation> getAllAffiliations() {
         final List<TeamAffiliationEntity> entities = teamAffiliationRepository.findAll();
 
-        return mapper.map(entities, TeamAffiliationGet.class);
+        return mapper.map(entities, TeamAffiliation.class);
     }
 
-    public Long createTeamAffiliation(final TeamAffiliationCreate affiliationCreate) {
-        final TeamAffiliationEntity entity = new TeamAffiliationEntity();
-
-        entity.setTeam(teamRepository.findOne(affiliationCreate.getTeamId()));
-        entity.setPerson(personRepository.findOne(affiliationCreate.getPersonId()));
-        entity.setAffiliation(affiliationCreate.getAffiliation());
+    public Long save(final TeamAffiliation affiliation) {
+        final TeamAffiliationEntity entity = mapper.map(affiliation, TeamAffiliationEntity.class);
 
         teamAffiliationRepository.save(entity);
 

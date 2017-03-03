@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 /**
  * Team Get DTO.
  */
-public class TeamGet {
+public class Team {
 
     private Long id;
 

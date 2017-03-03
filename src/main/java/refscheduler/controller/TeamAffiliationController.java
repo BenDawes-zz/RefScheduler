@@ -2,8 +2,7 @@ package refscheduler.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import refscheduler.domain.TeamAffiliationCreate;
-import refscheduler.domain.TeamAffiliationGet;
+import refscheduler.domain.TeamAffiliation;
 import refscheduler.service.TeamAffiliationService;
 
 import java.util.List;
@@ -19,22 +18,22 @@ public class TeamAffiliationController {
     private TeamAffiliationService teamAffiliationService;
 
     @GetMapping(path = "/affiliation/{affiliationId}")
-    public TeamAffiliationGet getTeamAffiliation(@PathVariable("affiliationId") final Long teamAffiliationId) {
+    public TeamAffiliation getTeamAffiliation(@PathVariable("affiliationId") final Long teamAffiliationId) {
         return teamAffiliationService.getTeamAffiliation(teamAffiliationId);
     }
 
     @GetMapping(path = "/affiliations/{teamId}")
-    public List<TeamAffiliationGet> getTeamAffiliationsByTeam(@PathVariable("teamId") final Long teamId) {
+    public List<TeamAffiliation> getTeamAffiliationsByTeam(@PathVariable("teamId") final Long teamId) {
         return teamAffiliationService.getAllAffiliationsByTeam(teamId);
     }
 
     @GetMapping(path = "/affiliations")
-    public List<TeamAffiliationGet> getAllTeamAffiliations() {
+    public List<TeamAffiliation> getAllTeamAffiliations() {
         return teamAffiliationService.getAllAffiliations();
     }
 
     @PostMapping(path = "/affiliations")
-    public Long createTeamAffiliation(@RequestBody final TeamAffiliationCreate affiliationCreate) {
-        return teamAffiliationService.createTeamAffiliation(affiliationCreate);
+    public Long createTeamAffiliation(@RequestBody final TeamAffiliation affiliation) {
+        return teamAffiliationService.save(affiliation);
     }
 }

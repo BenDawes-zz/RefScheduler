@@ -2,8 +2,7 @@ package refscheduler.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import refscheduler.domain.TeamCreate;
-import refscheduler.domain.TeamGet;
+import refscheduler.domain.Team;
 import refscheduler.entity.TeamEntity;
 import refscheduler.repository.TeamRepository;
 import refscheduler.util.DozerMapper;
@@ -22,23 +21,20 @@ public class TeamService {
     @Autowired
     private TeamRepository teamRepository;
 
-    public TeamGet getTeam(final Long teamId) {
+    public Team getTeam(final Long teamId) {
         final TeamEntity entity = teamRepository.findOne(teamId);
 
-        return mapper.map(entity, TeamGet.class);
+        return mapper.map(entity, Team.class);
     }
 
-    public List<TeamGet> getTeams() {
+    public List<Team> getTeams() {
         final List<TeamEntity> entities = teamRepository.findAll();
 
-        return mapper.map(entities, TeamGet.class);
+        return mapper.map(entities, Team.class);
     }
 
-    public Long createTeam(final TeamCreate teamCreate) {
-        final TeamEntity entity = new TeamEntity();
-
-        entity.setName(teamCreate.getName());
-        entity.setLocation(teamCreate.getLocation());
+    public Long save(final Team team) {
+        final TeamEntity entity = mapper.map(team, TeamEntity.class);
 
         teamRepository.save(entity);
 

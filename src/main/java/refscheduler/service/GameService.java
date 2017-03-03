@@ -2,8 +2,7 @@ package refscheduler.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import refscheduler.domain.GameCreate;
-import refscheduler.domain.GameGet;
+import refscheduler.domain.Game;
 import refscheduler.entity.GameEntity;
 import refscheduler.repository.GameRepository;
 import refscheduler.repository.PersonRepository;
@@ -34,65 +33,27 @@ public class GameService {
     @Autowired
     private TimeslotRepository timeslotRepository;
 
-    public Long createGame(final GameCreate gameCreate) {
-        final GameEntity entity = new GameEntity();
-
-        if (gameCreate.getTeamA() != null) {
-            entity.setTeamA(teamRepository.findOne(gameCreate.getTeamA()));
-        }
-
-        if (gameCreate.getTeamB() != null) {
-            entity.setTeamB(teamRepository.findOne(gameCreate.getTeamB()));
-        }
-
-        if (gameCreate.getTimeslot() != null) {
-            entity.setTimeslot(timeslotRepository.findOne(gameCreate.getTimeslot()));
-        }
-
-        if (gameCreate.getHeadReferee() != null) {
-            entity.setHeadReferee(personRepository.findOne(gameCreate.getHeadReferee()));
-        }
-
-        if (gameCreate.getAssistantRefereeA() != null) {
-            entity.setAssistantRefereeA(personRepository.findOne(gameCreate.getAssistantRefereeA()));
-        }
-
-        if (gameCreate.getAssistantRefereeB() != null) {
-            entity.setAssistantRefereeB(personRepository.findOne(gameCreate.getAssistantRefereeB()));
-        }
-
-        if (gameCreate.getAssistantRefereeC() != null) {
-            entity.setAssistantRefereeC(personRepository.findOne(gameCreate.getAssistantRefereeC()));
-        }
-
-        if (gameCreate.getAssistantRefereeD() != null) {
-            entity.setAssistantRefereeD(personRepository.findOne(gameCreate.getAssistantRefereeD()));
-        }
-
-        if (gameCreate.getSnitchReferee() != null) {
-            entity.setSnitchReferee(personRepository.findOne(gameCreate.getSnitchReferee()));
-        }
-
-        if (gameCreate.getSnitch() != null) {
-            entity.setSnitch(personRepository.findOne(gameCreate.getSnitch()));
-        }
-
-        entity.setPitch(gameCreate.getPitch());
+    public Long save(final Game game) {
+        final GameEntity entity = mapper.map(game, GameEntity.class);
 
         gameRepository.save(entity);
 
         return entity.getId();
     }
 
-    public GameGet getGame(final Long gameId) {
+    public Game getGame(final Long gameId) {
         final GameEntity entity = gameRepository.findOne(gameId);
 
-        return mapper.map(entity, GameGet.class);
+        return mapper.map(entity, Game.class);
     }
 
-    public List<GameGet> getGames() {
+    public List<Game> getGames() {
         final List<GameEntity> entities = gameRepository.findAll();
 
-        return mapper.map(entities, GameGet.class);
+        return mapper.map(entities, Game.class);
+    }
+
+    public void deleteGame(final Long gameId) {
+        gameRepository.delete(gameId);
     }
 }
