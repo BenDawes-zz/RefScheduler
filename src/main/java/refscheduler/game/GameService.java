@@ -1,0 +1,56 @@
+package refscheduler.game;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import refscheduler.person.PersonRepository;
+import refscheduler.team.TeamRepository;
+import refscheduler.timeslot.TimeslotRepository;
+import refscheduler.util.DozerMapper;
+
+import java.util.List;
+
+/**
+ * game scheduler.
+ */
+@Service("gameService")
+public class GameService {
+
+    @Autowired
+    private DozerMapper mapper;
+
+    @Autowired
+    private GameRepository gameRepository;
+
+    @Autowired
+    private PersonRepository personRepository;
+
+    @Autowired
+    private TeamRepository teamRepository;
+
+    @Autowired
+    private TimeslotRepository timeslotRepository;
+
+    public Long save(final Game game) {
+        final GameEntity entity = mapper.map(game, GameEntity.class);
+
+        gameRepository.save(entity);
+
+        return entity.getId();
+    }
+
+    public Game getGame(final Long gameId) {
+        final GameEntity entity = gameRepository.findOne(gameId);
+
+        return mapper.map(entity, Game.class);
+    }
+
+    public List<Game> getGames() {
+        final List<GameEntity> entities = gameRepository.findAll();
+
+        return mapper.map(entities, Game.class);
+    }
+
+    public void deleteGame(final Long gameId) {
+        gameRepository.delete(gameId);
+    }
+}
