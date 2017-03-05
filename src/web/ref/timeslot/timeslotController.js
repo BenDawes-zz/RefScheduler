@@ -1,4 +1,4 @@
-var myApp = angular.module('refScheduler', [])
+angular.module('refScheduler')
     .controller('timeslotCtrl', ['$scope', 'dataService', function($scope, dataService) {
     dataService.get('timeslots')
         .then(function success(response){

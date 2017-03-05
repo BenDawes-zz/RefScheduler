@@ -1,4 +1,4 @@
-var myApp = angular.module('refScheduler', [])
+angular.module('refScheduler')
 .controller('gameCtrl', ['$scope', 'dataService', function($scope, dataService) {
     dataService.get('games')
         .then(function success(response){
