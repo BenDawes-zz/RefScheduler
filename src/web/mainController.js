@@ -14,6 +14,10 @@ refScheduler.config(function($routeProvider) {
             templateUrl: 'ref/person/personInput.html',
             controller: 'personCtrl'
         })
+        .when('/person/:id', {
+            templateUrl: 'ref/person/personInput.html',
+            controller: 'personCtrl'
+        })
         .when('/game', {
             templateUrl: 'ref/game/games.html',
             controller: 'gameCtrl'
