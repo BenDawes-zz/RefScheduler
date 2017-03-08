@@ -41,9 +41,8 @@
                 </th>
                 <th class="column-title" style="display: table-cell;">Name </th>
                 <th class="column-title" style="display: table-cell;">Location </th>
-                <th class="bulk-actions" colspan="7" style="display: none;">
-                  <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt">1 Records Selected</span> ) <i class="fa fa-chevron-down"></i></a>
-                </th>
+                <th class="column-title no-link last" style="display: table-cell;"></th>
+                <th class="column-title no-link last" style="display: table-cell;"></th>
               </tr>
               </thead>
 
@@ -54,6 +53,8 @@
                 </td>
                 <td class=" ">{{team.name}}</td>
                 <td class=" ">{{team.location}} </td>
+                <td class=" last"><a ng-href="#/team/{{team.id}}">Edit</a></td>
+                <td class=" last" ng-click="delete(team);">Delete</td>
               </tr>
               </tbody>
             </table>

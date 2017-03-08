@@ -34,8 +34,20 @@ refScheduler.config(function($routeProvider) {
             templateUrl: 'ref/team/teamInput.html',
             controller: 'teamCtrl'
         })
+        .when('/team/:id', {
+            templateUrl: 'ref/team/teamInput.html',
+            controller: 'teamCtrl'
+        })
         .when('/timeslot', {
             templateUrl: 'ref/timeslot/timeslots.html',
+            controller: 'timeslotCtrl'
+        })
+        .when('/timeslot/create', {
+            templateUrl: 'ref/timeslot/timeslotInput.html',
+            controller: 'timeslotCtrl'
+        })
+        .when('/timeslot/:id', {
+            templateUrl: 'ref/timeslot/timeslotInput.html',
             controller: 'timeslotCtrl'
         })
         .otherwise({

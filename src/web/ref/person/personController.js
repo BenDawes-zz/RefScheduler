@@ -19,9 +19,9 @@ angular.module('refScheduler')
                     $scope.srLevel = response.data.snitchRefereeLevel;
                     $scope.snitch = response.data.snitch;
                 }, function error(response) {
-                    window.alert("Couldn't retrieve person")
-                    $location.path("/person")
-                })
+                    window.alert("Couldn't retrieve person");
+                    $location.path("/person");
+                });
         } else {
             $scope.id = '';
             $scope.firstName = '';
@@ -46,23 +46,19 @@ angular.module('refScheduler')
                 snitch: $scope.snitch
             })
           .then(function success(response) {
-                $location.path("/person")
+                $location.path("/person");
           }, function error(response) {
                 $scope.errors = response.status;
-                window.alert("Created failed")
+                window.alert("Created failed");
           });
         };
-
-        $scope.edit = function(person) {
-            $location.path('/person/' + person.id)
-        }
 
         $scope.delete = function(person) {
             dataService.delete('person/' + person.id)
             .then(function success(response) {
                 $scope.persons.splice($scope.persons.indexOf(person), 1);
             }, function error(response) {
-                window.alert("Delete failed!")
+                window.alert("Delete failed!");
             });
-        }
+        };
 }]);
