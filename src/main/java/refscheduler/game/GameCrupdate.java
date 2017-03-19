@@ -3,36 +3,33 @@ package refscheduler.game;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import refscheduler.person.Person;
-import refscheduler.team.Team;
-import refscheduler.timeslot.Timeslot;
 
 /**
- * game GET DTO.
+ * game Create/Update DTO.
  */
-public class Game {
+public class GameCrupdate {
 
     private Long id;
 
-    private Timeslot timeslot;
+    private Long timeslot;
 
-    private Team teamA;
+    private Long teamA;
 
-    private Team teamB;
+    private Long teamB;
 
-    private Person headReferee;
+    private Long headReferee;
 
-    private Person assistantRefereeA;
+    private Long assistantRefereeA;
 
-    private Person assistantRefereeB;
+    private Long assistantRefereeB;
 
-    private Person assistantRefereeC;
+    private Long assistantRefereeC;
 
-    private Person assistantRefereeD;
+    private Long assistantRefereeD;
 
-    private Person snitchReferee;
+    private Long snitchReferee;
 
-    private Person snitch;
+    private Long snitch;
 
     private Long pitch;
 
@@ -44,83 +41,83 @@ public class Game {
         this.id = id;
     }
 
-    public Timeslot getTimeslot() {
+    public Long getTimeslot() {
         return timeslot;
     }
 
-    public void setTimeslot(final Timeslot timeslot) {
+    public void setTimeslot(final Long timeslot) {
         this.timeslot = timeslot;
     }
 
-    public Team getTeamA() {
+    public Long getTeamA() {
         return teamA;
     }
 
-    public void setTeamA(Team teamA) {
+    public void setTeamA(Long teamA) {
         this.teamA = teamA;
     }
 
-    public Team getTeamB() {
+    public Long getTeamB() {
         return teamB;
     }
 
-    public void setTeamB(Team teamB) {
+    public void setTeamB(Long teamB) {
         this.teamB = teamB;
     }
 
-    public Person getHeadReferee() {
+    public Long getHeadReferee() {
         return headReferee;
     }
 
-    public void setHeadReferee(Person headReferee) {
+    public void setHeadReferee(Long headReferee) {
         this.headReferee = headReferee;
     }
 
-    public Person getAssistantRefereeA() {
+    public Long getAssistantRefereeA() {
         return assistantRefereeA;
     }
 
-    public void setAssistantRefereeA(Person assistantRefereeA) {
+    public void setAssistantRefereeA(Long assistantRefereeA) {
         this.assistantRefereeA = assistantRefereeA;
     }
 
-    public Person getAssistantRefereeB() {
+    public Long getAssistantRefereeB() {
         return assistantRefereeB;
     }
 
-    public void setAssistantRefereeB(Person assistantRefereeB) {
+    public void setAssistantRefereeB(Long assistantRefereeB) {
         this.assistantRefereeB = assistantRefereeB;
     }
 
-    public Person getAssistantRefereeC() {
+    public Long getAssistantRefereeC() {
         return assistantRefereeC;
     }
 
-    public void setAssistantRefereeC(Person assistantRefereeC) {
+    public void setAssistantRefereeC(Long assistantRefereeC) {
         this.assistantRefereeC = assistantRefereeC;
     }
 
-    public Person getAssistantRefereeD() {
+    public Long getAssistantRefereeD() {
         return assistantRefereeD;
     }
 
-    public void setAssistantRefereeD(Person assistantRefereeD) {
+    public void setAssistantRefereeD(Long assistantRefereeD) {
         this.assistantRefereeD = assistantRefereeD;
     }
 
-    public Person getSnitchReferee() {
+    public Long getSnitchReferee() {
         return snitchReferee;
     }
 
-    public void setSnitchReferee(Person snitchReferee) {
+    public void setSnitchReferee(Long snitchReferee) {
         this.snitchReferee = snitchReferee;
     }
 
-    public Person getSnitch() {
+    public Long getSnitch() {
         return snitch;
     }
 
-    public void setSnitch(Person snitch) {
+    public void setSnitch(Long snitch) {
         this.snitch = snitch;
     }
 
@@ -138,7 +135,7 @@ public class Game {
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        Game game = (Game) o;
+        GameCrupdate game = (GameCrupdate) o;
 
         return new EqualsBuilder()
                 .append(id, game.id)

@@ -39,19 +39,19 @@
                                 <th>
                                     <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" id="check-all" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
                                 </th>
+                                <th class="column-title" style="display: table-cell;">Timeslot</th>
                                 <th class="column-title" style="display: table-cell;">Team A</th>
                                 <th class="column-title" style="display: table-cell;">Team B</th>
-                                <th class="column-title" style="display: table-cell;">Head Referee</th>
-                                <th class="column-title" style="display: table-cell;">Assistant Referee A</th>
-                                <th class="column-title" style="display: table-cell;">Assistant Referee B</th>
-                                <th class="column-title" style="display: table-cell;">Assistant Referee C</th>
-                                <th class="column-title" style="display: table-cell;">Assistant Referee D</th>
-                                <th class="column-title" style="display: table-cell;">Snitch Referee</th>
+                                <th class="column-title" style="display: table-cell;">HR</th>
+                                <th class="column-title" style="display: table-cell;">AR A</th>
+                                <th class="column-title" style="display: table-cell;">AR B</th>
+                                <th class="column-title" style="display: table-cell;">AR C</th>
+                                <th class="column-title" style="display: table-cell;">AR D</th>
+                                <th class="column-title" style="display: table-cell;">SR</th>
                                 <th class="column-title" style="display: table-cell;">Snitch</th>
                                 <th class="column-title" style="display: table-cell;">Pitch</th>
-                                <th class="bulk-actions" colspan="7" style="display: none;">
-                                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt">1 Records Selected</span> ) <i class="fa fa-chevron-down"></i></a>
-                                </th>
+                                <th class="column-title no-link last" style="display: table-cell;"></th>
+                                <th class="column-title no-link last" style="display: table-cell;"></th>
                             </tr>
                             </thead>
 
@@ -60,6 +60,7 @@
                                 <td class="a-center ">
                                     <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="flat" name="table_records" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
                                 </td>
+                                <td class=" ">{{game.timeslot.time}}</td>
                                 <td class=" ">{{game.teamA.name}}</td>
                                 <td class=" ">{{game.teamB.name}} </td>
                                 <td class=" ">{{game.headReferee.firstName + " " + game.headReferee.lastName}} </td>
@@ -70,6 +71,8 @@
                                 <td class=" ">{{game.snitchReferee.firstName + " " + game.snitchReferee.lastName}} </td>
                                 <td class=" ">{{game.snitch.firstName + " " + game.snitch.lastName}} </td>
                                 <td class=" ">{{game.pitch}} </td>
+                                <td class=" last"><a ng-href="#/game/{{game.id}}">Edit</a></td>
+                                <td class=" last" ng-click="delete(game);">Delete</td>
                             </tr>
                             </tbody>
                         </table>

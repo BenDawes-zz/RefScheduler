@@ -22,6 +22,14 @@ refScheduler.config(function($routeProvider) {
             templateUrl: 'ref/game/games.html',
             controller: 'gameCtrl'
         })
+        .when('/game/create', {
+            templateUrl: 'ref/game/gameInput.html',
+            controller: 'gameCtrl'
+        })
+        .when('/game/:id', {
+            templateUrl: 'ref/game/gameInput.html',
+            controller: 'gameCtrl'
+        })
         .when('/affiliation', {
             templateUrl: 'ref/affiliation/affiliations.html',
             controller: 'affiliationCtrl'

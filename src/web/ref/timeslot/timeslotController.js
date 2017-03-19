@@ -25,7 +25,7 @@ angular.module('refScheduler')
           dataService.post('timeslot',
             {
                 id: $scope.id,
-                time: $scope.time,
+                time: $scope.time.toISOString(),
             })
           .then(function success(response) {
                 $location.path("/timeslot");

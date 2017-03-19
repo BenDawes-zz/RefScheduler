@@ -13,5 +13,48 @@
             <b>time</b>
         </field>
     </mapping>
-
+    <mapping>
+        <class-a>refscheduler.game.GameCrupdate</class-a>
+        <class-b>refscheduler.game.GameEntity</class-b>
+        <field-exclude>
+            <a>teamA</a>
+            <b>teamA</b>
+        </field-exclude>
+        <field-exclude>
+            <a>teamB</a>
+            <b>teamB</b>
+        </field-exclude>
+        <field-exclude>
+            <a>timeslot</a>
+            <b>timeslot</b>
+        </field-exclude>
+        <field-exclude>
+            <a>headReferee</a>
+            <b>headReferee</b>
+        </field-exclude>
+        <field-exclude>
+            <a>assistantRefereeA</a>
+            <b>assistantRefereeA</b>
+        </field-exclude>
+        <field-exclude>
+            <a>assistantRefereeB</a>
+            <b>assistantRefereeB</b>
+        </field-exclude>
+        <field-exclude>
+            <a>assistantRefereeC</a>
+            <b>assistantRefereeC</b>
+        </field-exclude>
+        <field-exclude>
+            <a>assistantRefereeD</a>
+            <b>assistantRefereeD</b>
+        </field-exclude>
+        <field-exclude>
+            <a>snitchReferee</a>
+            <b>snitchReferee</b>
+        </field-exclude>
+        <field-exclude>
+            <a>snitch</a>
+            <b>snitch</b>
+        </field-exclude>
+    </mapping>
 </mappings>

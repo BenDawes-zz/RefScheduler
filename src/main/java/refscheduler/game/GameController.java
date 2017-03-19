@@ -3,7 +3,6 @@ package refscheduler.game;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -22,7 +21,7 @@ public class GameController {
     }
 
     @PostMapping()
-    public Long createGame(@RequestBody @Valid final Game game) {
+    public Long createGame(@RequestBody final Game game) {
         return gameService.save(game);
     }
 
