@@ -34,6 +34,14 @@ refScheduler.config(function($routeProvider) {
             templateUrl: 'ref/affiliation/affiliations.html',
             controller: 'affiliationCtrl'
         })
+        .when('/affiliation/create', {
+            templateUrl: 'ref/affiliation/affiliationInput.html',
+            controller: 'affiliationCtrl'
+        })
+        .when('/affiliation/:id', {
+            templateUrl: 'ref/affiliation/affiliationInput.html',
+            controller: 'affiliationCtrl'
+        })
         .when('/team', {
             templateUrl: 'ref/team/teams.html',
             controller: 'teamCtrl'

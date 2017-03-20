@@ -10,7 +10,7 @@ import java.util.List;
  * The team affiliation repository.
  */
 @Repository
-public interface TeamAffiliationRepository extends JpaRepository<TeamAffiliationEntity, Long> {
+public interface AffiliationRepository extends JpaRepository<AffiliationEntity, Long> {
 
-    List<TeamAffiliationEntity> findByTeam(final TeamEntity teamEntity);
+    List<AffiliationEntity> findByTeam(final TeamEntity teamEntity);
 }

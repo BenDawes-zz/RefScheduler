@@ -13,7 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "TEAM_AFFILIATION")
-public class TeamAffiliationEntity {
+public class AffiliationEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

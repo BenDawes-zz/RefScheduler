@@ -5,7 +5,7 @@ package refscheduler.affiliation;
  */
 public enum AffiliationType {
 
-    AFFILIATE,
+    PERSONAL,
 
     PLAYER,
 

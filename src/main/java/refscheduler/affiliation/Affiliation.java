@@ -9,7 +9,7 @@ import refscheduler.team.Team;
 /**
  * Team Affiliation Get DTO.
  */
-public class TeamAffiliation implements Comparable<TeamAffiliation> {
+public class Affiliation implements Comparable<Affiliation> {
 
     private Long id;
 
@@ -67,7 +67,7 @@ public class TeamAffiliation implements Comparable<TeamAffiliation> {
     }
 
     @Override
-    public int compareTo(final TeamAffiliation that) {
+    public int compareTo(final Affiliation that) {
         if (this.equals(that)) {
             return 0;
         }

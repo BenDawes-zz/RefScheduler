@@ -1,7 +1,7 @@
 package refscheduler.scheduler;
 
 import org.springframework.stereotype.Service;
-import refscheduler.affiliation.TeamAffiliation;
+import refscheduler.affiliation.Affiliation;
 import refscheduler.person.Person;
 import refscheduler.timeslot.Timeslot;
 
@@ -16,7 +16,7 @@ public class SchedulingEngine {
 
     private static final int NUMBER_OF_ARS = 3;
 
-    public List<Timeslot> scheduleGames(final List<Timeslot> timeslots, final List<TeamAffiliation> affiliations) {
+    public List<Timeslot> scheduleGames(final List<Timeslot> timeslots, final List<Affiliation> affiliations) {
 
         for (Timeslot timeslot : timeslots) {
             List<Person> usedPeople = new ArrayList<>();
@@ -26,7 +26,7 @@ public class SchedulingEngine {
 //                        .filter(affiliation -> !affiliation.getTeam().equals(game.getTeamA())
 //                                && !affiliation.getTeam().equals(game.getTeamB()))
 //                        .sorted()
-//                        .map(TeamAffiliation::getPerson)
+//                        .map(Affiliation::getPerson)
 //                        .filter(personGet -> !usedPeople.contains(personGet))
 //                        .collect(Collectors.toList());
 //
