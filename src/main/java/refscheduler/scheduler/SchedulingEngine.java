@@ -1,12 +1,18 @@
 package refscheduler.scheduler;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import refscheduler.affiliation.Affiliation;
+import refscheduler.game.Game;
+import refscheduler.game.GameService;
 import refscheduler.person.Person;
 import refscheduler.timeslot.Timeslot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * The scheduler for scheduling games.
@@ -14,39 +20,44 @@ import java.util.List;
 @Service("schedulingEngine")
 public class SchedulingEngine {
 
-    private static final int NUMBER_OF_ARS = 3;
+    @Autowired
+    private GameService gameService;
 
-    public List<Timeslot> scheduleGames(final List<Timeslot> timeslots, final List<Affiliation> affiliations) {
-
-        for (Timeslot timeslot : timeslots) {
+    public void scheduleGames(final Map<Timeslot, List<Game>> allGames,
+                              final List<Person> persons,
+                              final List<Affiliation> affiliations) {
+        for (List<Game> timeslotGames : allGames.values()) {
             List<Person> usedPeople = new ArrayList<>();
 
-//            for (Game game : timeslot.getGames()) {
-//                List<Person> unaffiliatedPeople = affiliations.stream()
-//                        .filter(affiliation -> !affiliation.getTeam().equals(game.getTeamA())
-//                                && !affiliation.getTeam().equals(game.getTeamB()))
-//                        .sorted()
-//                        .map(Affiliation::getPerson)
-//                        .filter(personGet -> !usedPeople.contains(personGet))
-//                        .collect(Collectors.toList());
-//
-//                if (unaffiliatedPeople.size() >= 3 + NUMBER_OF_ARS) {
-//                    game.setHeadReferee(unaffiliatedPeople.get(0));
-//                    game.setAssistantRefereeA(unaffiliatedPeople.get(1));
-//                    game.setAssistantRefereeB(unaffiliatedPeople.get(2));
-//                    game.setAssistantRefereeC(unaffiliatedPeople.get(3));
-//                    game.setSnitchReferee(unaffiliatedPeople.get(4));
-//                    game.setSnitch(unaffiliatedPeople.get(5));
-//                    usedPeople.add(unaffiliatedPeople.get(0));
-//                    usedPeople.add(unaffiliatedPeople.get(1));
-//                    usedPeople.add(unaffiliatedPeople.get(2));
-//                    usedPeople.add(unaffiliatedPeople.get(3));
-//                    usedPeople.add(unaffiliatedPeople.get(4));
-//                    usedPeople.add(unaffiliatedPeople.get(5));
-//                }
-//            }
-        }
+            for (Game game : timeslotGames) {
+                List<Person> unavailablePeople = affiliations.stream()
+                        .filter(x -> game.getTeamA().equals(x.getTeam())
+                        || game.getTeamB().equals(x.getTeam())
+                        || usedPeople.contains(x.getPerson()))
+                        .map(Affiliation::getPerson)
+                        .collect(toList());
 
-        return timeslots;
+                List<Person> potentialPeople = persons.stream()
+                        .filter(x -> !unavailablePeople.contains(x))
+                        .collect(toList());
+
+                if (potentialPeople.size() >= 6) {
+                    game.setHeadReferee(potentialPeople.get(0));
+                    usedPeople.add(potentialPeople.get(0));
+                    game.setAssistantRefereeA(potentialPeople.get(1));
+                    usedPeople.add(potentialPeople.get(1));
+                    game.setAssistantRefereeB(potentialPeople.get(2));
+                    usedPeople.add(potentialPeople.get(2));
+                    game.setAssistantRefereeC(potentialPeople.get(3));
+                    usedPeople.add(potentialPeople.get(3));
+                    game.setSnitchReferee(potentialPeople.get(4));
+                    usedPeople.add(potentialPeople.get(4));
+                    game.setSnitch(potentialPeople.get(5));
+                    usedPeople.add(potentialPeople.get(5));
+
+                    gameService.save(game);
+                }
+            }
+        }
     }
 }

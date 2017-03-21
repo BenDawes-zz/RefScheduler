@@ -4,10 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import refscheduler.person.PersonRepository;
 import refscheduler.team.TeamRepository;
+import refscheduler.timeslot.Timeslot;
 import refscheduler.timeslot.TimeslotRepository;
 import refscheduler.util.DozerMapper;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * game scheduler.
@@ -52,5 +56,13 @@ public class GameService {
 
     public void deleteGame(final Long gameId) {
         gameRepository.delete(gameId);
+    }
+
+    public Map<Timeslot, List<Game>> getAllGamesByTimeslot() {
+        final List<GameEntity> entities = gameRepository.findAll();
+
+        List<Game> games =  mapper.map(entities, Game.class);
+
+        return games.stream().collect(Collectors.groupingBy(Game::getTimeslot, HashMap::new, Collectors.toList()));
     }
 }

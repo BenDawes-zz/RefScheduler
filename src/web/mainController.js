@@ -71,4 +71,8 @@ refScheduler.config(function($routeProvider) {
         });
 });
 
-refScheduler.controller('mainCtrl', ['$scope', function($scope) {}]);
+refScheduler.controller('mainCtrl', ['$scope', 'dataService', function($scope, dataService) {
+    $scope.schedule = function() {
+        dataService.get('game/schedule');
+    };
+}]);
