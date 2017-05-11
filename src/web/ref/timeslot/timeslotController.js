@@ -22,10 +22,11 @@ angular.module('refScheduler')
         }
 
         $scope.submit = function() {
+          var dateTime = new Date($scope.time);
           dataService.post('timeslot',
             {
                 id: $scope.id,
-                time: $scope.time.toISOString(),
+                time: dateTime.toISOString()
             })
           .then(function success(response) {
                 $location.path("/timeslot");
