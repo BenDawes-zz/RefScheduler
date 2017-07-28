@@ -1,73 +1,87 @@
 package refscheduler.scheduler;
 
-import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import refscheduler.Main;
 import refscheduler.affiliation.Affiliation;
+import refscheduler.affiliation.AffiliationService;
 import refscheduler.game.Game;
 import refscheduler.game.GameService;
 import refscheduler.person.Person;
+import refscheduler.person.PersonService;
 import refscheduler.team.Team;
+import refscheduler.team.TeamService;
 import refscheduler.timeslot.Timeslot;
+import refscheduler.timeslot.TimeslotService;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonMap;
-import static refscheduler.affiliation.AffiliationType.PLAYER;
-import static refscheduler.affiliation.builder.AffiliationBuilder.newAffiliation;
 import static refscheduler.game.builder.GameBuilder.newGame;
-import static refscheduler.person.Level.LEVEL_1;
-import static refscheduler.person.builder.PersonBuilder.newPerson;
-import static refscheduler.team.builder.TeamBuilder.newTeam;
-import static refscheduler.timeslot.builder.TimeslotBuilder.newTimeslot;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = Main.class)
 public class SchedulingEngineTest {
 
-    @InjectMocks
+    @Autowired
     private SchedulingEngine schedulingEngine;
 
-    @Mock
+    @Autowired
     private GameService gameService;
+
+    @Autowired
+    private TeamService teamService;
+
+    @Autowired
+    private TimeslotService timeslotService;
+
+    @Autowired
+    private PersonService personService;
+
+    @Autowired
+    private AffiliationService affiliationService;
 
     private Map<Timeslot, List<Game>> games;
     private List<Person> people;
     private List<Affiliation> affiliations;
+    private List<Timeslot> timeslots;
 
     @Before
     public void setup() {
-        // Teams
-        Team teamA = newTeam().withName("Tornadoes").build();
-        Team teamB = newTeam().withName("Velociraptors").build();
-        Team teamC = newTeam().withName("Werewolves").build();
-        Team teamD = newTeam().withName("Unspeakables").build();
-
-        //Timeslot
-        Timeslot timeslot = newTimeslot().withTime(DateTime.now()).build();
-
-        // People
-        Person johnDoe = newPerson().withFirstName("John").withLastName("Doe").withSnitch(false)
-                .withHeadRefereeLevel(LEVEL_1).withAssistantRefereeLevel(LEVEL_1).withSnitchRefereeLevel(LEVEL_1).build();
-
-        // Affiliations
-        Affiliation affiliationJohnDoe =
-                newAffiliation().withTeam(teamA).withPerson(johnDoe).withAffiliationType(PLAYER).build();
+        List<Team> teams = teamService.getTeams();
+        timeslots = timeslotService.getAllTimeslots();
+        people = personService.getAll();
+        affiliations = affiliationService.getAllAffiliations();
 
         // Games
-        Game gameOne = newGame().withTeamA(teamA).withTeamB(teamB).withTimeslot(timeslot).withPitch(1L).build();
-        Game gameTwo = newGame().withTeamA(teamC).withTeamB(teamD).withTimeslot(timeslot).withPitch(2L).build();
+        Game gameOne = newGame().withTeamA(teams.get(0)).withTeamB(teams.get(1)).withTimeslot(timeslots.get(0)).withPitch(1L).build();
+        Game gameTwo = newGame().withTeamA(teams.get(2)).withTeamB(teams.get(3)).withTimeslot(timeslots.get(0)).withPitch(2L).build();
 
-        games = singletonMap(timeslot, asList(gameOne, gameTwo));
-        people = asList(johnDoe);
-        affiliations = asList(affiliationJohnDoe);
-
+        games = singletonMap(timeslots.get(0), asList(gameOne, gameTwo));
     }
 
     @Test
     public void simpleSchedule() {
         schedulingEngine.scheduleGames(games, people, affiliations);
+
+        List<Game> games = gameService.getGames();
+
+        for (Timeslot timeslot : timeslots) {
+            Set<Person> scheduledOfficials = new HashSet<>();
+
+            games.stream()
+                .filter(game -> timeslot.equals(game.getTimeslot()))
+                .map(game -> scheduledOfficials.addAll(game.getGameOfficials()));
+
+            System.out.println(scheduledOfficials);
+        }
     }
 }

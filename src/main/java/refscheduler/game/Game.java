@@ -7,6 +7,9 @@ import refscheduler.person.Person;
 import refscheduler.team.Team;
 import refscheduler.timeslot.Timeslot;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * game GET DTO.
  */
@@ -130,6 +133,18 @@ public class Game {
 
     public void setPitch(Long pitch) {
         this.pitch = pitch;
+    }
+
+    public List<Person> getGameOfficials() {
+        return Arrays.asList(
+                headReferee,
+                assistantRefereeA,
+                assistantRefereeB,
+                assistantRefereeC,
+                assistantRefereeD,
+                snitchReferee,
+                snitch
+        );
     }
 
     @Override

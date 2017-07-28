@@ -44,6 +44,13 @@ public class PersonService {
         return personEntity.getId();
     }
 
+    public Person getByName(final String name) {
+        final String[] names = name.split(" ");
+        final PersonEntity personEntity = personRepository.findByFirstNameAndLastName(names[0], names[1]);
+
+        return mapper.map(personEntity, Person.class);
+    }
+
     @Transactional
     public void deletePerson(final Long personId) {
         personRepository.delete(personId);

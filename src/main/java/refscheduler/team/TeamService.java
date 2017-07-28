@@ -37,4 +37,10 @@ public class TeamService {
 
         return entity.getId();
     }
+
+    public Team getByName(final String name) {
+        final TeamEntity entity = teamRepository.findByName(name);
+
+        return mapper.map(entity, Team.class);
+    }
 }
