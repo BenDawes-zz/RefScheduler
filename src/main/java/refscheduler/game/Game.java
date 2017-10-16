@@ -1,5 +1,6 @@
 package refscheduler.game;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -25,13 +26,7 @@ public class Game {
 
     private Person headReferee;
 
-    private Person assistantRefereeA;
-
-    private Person assistantRefereeB;
-
-    private Person assistantRefereeC;
-
-    private Person assistantRefereeD;
+    private List<Person> assistantReferees;
 
     private Person snitchReferee;
 
@@ -79,36 +74,20 @@ public class Game {
         this.headReferee = headReferee;
     }
 
-    public Person getAssistantRefereeA() {
-        return assistantRefereeA;
+    public List<Person> getAssistantReferees() {
+        return assistantReferees;
     }
 
-    public void setAssistantRefereeA(Person assistantRefereeA) {
-        this.assistantRefereeA = assistantRefereeA;
+    public void setAssistantReferees(final List<Person> assistantReferees) {
+        this.assistantReferees = assistantReferees;
     }
 
-    public Person getAssistantRefereeB() {
-        return assistantRefereeB;
+    public void addAssistantReferee(final Person referee) {
+        assistantReferees.add(referee);
     }
 
-    public void setAssistantRefereeB(Person assistantRefereeB) {
-        this.assistantRefereeB = assistantRefereeB;
-    }
-
-    public Person getAssistantRefereeC() {
-        return assistantRefereeC;
-    }
-
-    public void setAssistantRefereeC(Person assistantRefereeC) {
-        this.assistantRefereeC = assistantRefereeC;
-    }
-
-    public Person getAssistantRefereeD() {
-        return assistantRefereeD;
-    }
-
-    public void setAssistantRefereeD(Person assistantRefereeD) {
-        this.assistantRefereeD = assistantRefereeD;
+    public void removeAssistantReferee(final Person referee) {
+        assistantReferees.remove(referee);
     }
 
     public Person getSnitchReferee() {
@@ -135,16 +114,19 @@ public class Game {
         this.pitch = pitch;
     }
 
+    @JsonIgnore
     public List<Person> getGameOfficials() {
-        return Arrays.asList(
+        List<Person> refs =  Arrays.asList(
                 headReferee,
-                assistantRefereeA,
-                assistantRefereeB,
-                assistantRefereeC,
-                assistantRefereeD,
                 snitchReferee,
                 snitch
         );
+        refs.addAll(assistantReferees);
+        return refs;
+    }
+
+    public boolean involvesTeam(Team team) {
+        return  team != null && (teamA.equals(team) || teamB.equals(team));
     }
 
     @Override
@@ -161,10 +143,7 @@ public class Game {
                 .append(teamA, game.teamA)
                 .append(teamB, game.teamB)
                 .append(headReferee, game.headReferee)
-                .append(assistantRefereeA, game.assistantRefereeA)
-                .append(assistantRefereeB, game.assistantRefereeB)
-                .append(assistantRefereeC, game.assistantRefereeC)
-                .append(assistantRefereeD, game.assistantRefereeD)
+                .append(assistantReferees, game.assistantReferees)
                 .append(snitchReferee, game.snitchReferee)
                 .append(snitch, game.snitch)
                 .append(pitch, game.pitch)
@@ -179,10 +158,7 @@ public class Game {
                 .append(teamA)
                 .append(teamB)
                 .append(headReferee)
-                .append(assistantRefereeA)
-                .append(assistantRefereeB)
-                .append(assistantRefereeC)
-                .append(assistantRefereeD)
+                .append(assistantReferees)
                 .append(snitchReferee)
                 .append(snitch)
                 .append(pitch)
@@ -197,13 +173,11 @@ public class Game {
                 .append("teamA", teamA)
                 .append("teamB", teamB)
                 .append("headReferee", headReferee)
-                .append("assistantRefereeA", assistantRefereeA)
-                .append("assistantRefereeB", assistantRefereeB)
-                .append("assistantRefereeC", assistantRefereeC)
-                .append("assistantRefereeD", assistantRefereeD)
+                .append("assistantReferees", assistantReferees)
                 .append("snitchReferee", snitchReferee)
                 .append("snitch", snitch)
                 .append("pitch", pitch)
                 .toString();
     }
+
 }

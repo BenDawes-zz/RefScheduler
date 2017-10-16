@@ -5,6 +5,8 @@ import refscheduler.person.Person;
 import refscheduler.team.Team;
 import refscheduler.timeslot.Timeslot;
 
+import java.util.List;
+
 public class GameBuilder {
 
     private Long id;
@@ -12,10 +14,7 @@ public class GameBuilder {
     private Team teamA;
     private Team teamB;
     private Person headReferee;
-    private Person assistantRefereeA;
-    private Person assistantRefereeB;
-    private Person assistantRefereeC;
-    private Person assistantRefereeD;
+    private List<Person> assistantReferees;
     private Person snitchReferee;
     private Person snitch;
     private Long pitch;
@@ -53,23 +52,8 @@ public class GameBuilder {
         return this;
     }
 
-    public GameBuilder withAssistantRefereeA(final Person assistantRefereeA) {
-        this.assistantRefereeA = assistantRefereeA;
-        return this;
-    }
-
-    public GameBuilder withAssistantRefereeB(final Person assistantRefereeB) {
-        this.assistantRefereeB = assistantRefereeB;
-        return this;
-    }
-
-    public GameBuilder withAssistantRefereeC(final Person assistantRefereeC) {
-        this.assistantRefereeC = assistantRefereeC;
-        return this;
-    }
-
-    public GameBuilder withAssistantRefereeD(final Person assistantRefereeD) {
-        this.assistantRefereeD = assistantRefereeD;
+    public GameBuilder withAssistantReferees(final List<Person> assistantReferees) {
+        this.assistantReferees = assistantReferees;
         return this;
     }
 
@@ -95,10 +79,7 @@ public class GameBuilder {
         game.setTeamA(teamA);
         game.setTeamB(teamB);
         game.setHeadReferee(headReferee);
-        game.setAssistantRefereeA(assistantRefereeA);
-        game.setAssistantRefereeB(assistantRefereeB);
-        game.setAssistantRefereeC(assistantRefereeC);
-        game.setAssistantRefereeD(assistantRefereeD);
+        game.setAssistantReferees(assistantReferees);
         game.setSnitchReferee(snitchReferee);
         game.setSnitch(snitch);
         game.setPitch(pitch);

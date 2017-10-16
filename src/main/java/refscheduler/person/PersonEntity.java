@@ -4,7 +4,14 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Person entity.
@@ -39,8 +46,9 @@ public class PersonEntity {
     @Column(name = "SNITCH_REFEREE_LEVEL")
     private Level snitchRefereeLevel;
 
-    @Column(name = "SNITCH")
-    private Boolean snitch;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "SNITCH_LEVEL")
+    private Level snitchLevel;
 
     public Long getId() {
         return id;
@@ -98,12 +106,12 @@ public class PersonEntity {
         this.snitchRefereeLevel = snitchRefereeLevel;
     }
 
-    public Boolean getSnitch() {
-        return snitch;
+    public Level getSnitchLevel() {
+        return snitchLevel;
     }
 
-    public void setSnitch(Boolean snitch) {
-        this.snitch = snitch;
+    public void setSnitchLevel(Level snitchLevel) {
+        this.snitchLevel = snitchLevel;
     }
 
     @Override

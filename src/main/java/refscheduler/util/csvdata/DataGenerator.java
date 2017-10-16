@@ -1,15 +1,11 @@
-package refscheduler.testdata;
+package refscheduler.util.csvdata;
 
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-import refscheduler.Main;
+import org.springframework.stereotype.Component;
 import refscheduler.affiliation.Affiliation;
 import refscheduler.affiliation.AffiliationService;
+import refscheduler.game.Game;
+import refscheduler.game.GameService;
 import refscheduler.person.Person;
 import refscheduler.person.PersonService;
 import refscheduler.team.Team;
@@ -19,7 +15,9 @@ import refscheduler.timeslot.TimeslotService;
 
 import java.util.List;
 
+import static java.util.Arrays.asList;
 import static refscheduler.affiliation.builder.AffiliationBuilder.newAffiliation;
+import static refscheduler.game.builder.GameBuilder.newGame;
 import static refscheduler.person.builder.PersonBuilder.newPerson;
 import static refscheduler.team.builder.TeamBuilder.newTeam;
 import static refscheduler.timeslot.builder.TimeslotBuilder.newTimeslot;
@@ -27,44 +25,35 @@ import static refscheduler.timeslot.builder.TimeslotBuilder.newTimeslot;
 /**
  * Reads data from the CSV files and adds it to the database
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = Main.class)
-public class GenerateTestData {
+@Component
+public class DataGenerator {
 
     private CsvUtils csvUtils = new CsvUtils();
 
     @Autowired
     private PersonService personService;
+
     @Autowired
     private TeamService teamService;
+
     @Autowired
     private AffiliationService affiliationService;
+
     @Autowired
     private TimeslotService timeslotService;
 
-    private List<String[]> peopleLines;
-    private List<String[]> teamLines;
-    private List<String[]> affiliationLines;
-    private List<String[]> timeslotLines;
+    @Autowired
+    private GameService gameService;
 
-    @Before
-    public void readCsvFiles() {
-        peopleLines = csvUtils.readPeopleLines();
-        teamLines = csvUtils.readTeamLines();
-        affiliationLines = csvUtils.readAffiliationLines();
-        timeslotLines = csvUtils.readTimeslotLines();
+    public void generateDummyData() {
+        generatePeople(csvUtils.readPeopleLines());
+        generateTimeslots(csvUtils.readTimeslotLines());
+        generateTeams(csvUtils.readTeamLines());
+        generateAffiliations(csvUtils.readAffiliationLines());
+        generateGames(csvUtils.readGameLines());
     }
 
-    @Ignore
-    @Test
-    public void generateTestData() {
-        generatePeople();
-        generateTeams();
-        generateAffiliations();
-        generateTimeslots();
-    }
-
-    private void generatePeople() {
+    public void generatePeople(List<String[]> peopleLines) {
         for (String[] line : peopleLines) {
             CsvUtils.PeopleLine peopleLine = new CsvUtils.PeopleLine(line);
 
@@ -82,7 +71,7 @@ public class GenerateTestData {
         }
     }
 
-    private void generateTeams() {
+    public void generateTeams(List<String[]> teamLines) {
         for (String[] line : teamLines) {
             CsvUtils.TeamLine teamLine = new CsvUtils.TeamLine(line);
 
@@ -95,7 +84,7 @@ public class GenerateTestData {
         }
     }
 
-    private void generateAffiliations() {
+    public void generateAffiliations(List<String[]> affiliationLines) {
         for (String[] line : affiliationLines) {
             CsvUtils.AffiliationLine affiliationLine = new CsvUtils.AffiliationLine(line);
 
@@ -109,7 +98,7 @@ public class GenerateTestData {
         }
     }
 
-    private void generateTimeslots() {
+    public void generateTimeslots(List<String[]> timeslotLines) {
         for (String[] line : timeslotLines) {
             CsvUtils.TimeslotLine timeslotLine = new CsvUtils.TimeslotLine(line);
 
@@ -118,6 +107,43 @@ public class GenerateTestData {
                     .build();
 
             timeslotService.save(timeslot);
+        }
+    }
+
+    public void generateGames(List<String[]> gameLines) {
+        for (String[] line : gameLines) {
+            CsvUtils.GameLine gameLine = new CsvUtils.GameLine(line);
+
+            Game game;
+
+            if (line.length > 4) {
+                List<Person> assistantReferees = asList(
+                    personService.getByName(gameLine.assistantRefereeA),
+                    personService.getByName(gameLine.assistantRefereeB),
+                    personService.getByName(gameLine.assistantRefereeC),
+                    personService.getByName(gameLine.assistantRefereeD)
+                );
+
+                game = newGame()
+                        .withTimeslot(timeslotService.getTimeslotByTime(gameLine.time))
+                        .withPitch(gameLine.pitch)
+                        .withTeamA(teamService.getByName(gameLine.teamA))
+                        .withTeamB(teamService.getByName(gameLine.teamB))
+                        .withHeadReferee(personService.getByName(gameLine.headReferee))
+                        .withAssistantReferees(assistantReferees)
+                        .withSnitchReferee(personService.getByName(gameLine.snitchReferee))
+                        .withSnitch(personService.getByName(gameLine.snitch))
+                        .build();
+            } else {
+                game = newGame()
+                        .withTimeslot(timeslotService.getTimeslotByTime(gameLine.time))
+                        .withPitch(gameLine.pitch)
+                        .withTeamA(teamService.getByName(gameLine.teamA))
+                        .withTeamB(teamService.getByName(gameLine.teamB))
+                        .build();
+            }
+
+            gameService.save(game);
         }
     }
 }

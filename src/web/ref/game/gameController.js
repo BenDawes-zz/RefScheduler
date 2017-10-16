@@ -27,10 +27,7 @@ angular.module('refScheduler')
                         $scope.pitch = response.data.pitch;
                         $scope.timeslot = findById($scope.timeslots, response.data.timeslot);
                         $scope.headReferee = findById($scope.persons, response.data.headReferee);
-                        $scope.assistantRefereeA = findById($scope.persons, response.data.assistantRefereeA);
-                        $scope.assistantRefereeB = findById($scope.persons, response.data.assistantRefereeB);
-                        $scope.assistantRefereeC = findById($scope.persons, response.data.assistantRefereeC);
-                        $scope.assistantRefereeD = findById($scope.persons, response.data.assistantRefereeD);
+                        $scope.assistantReferees = findById($scope.persons, response.data.assistantReferees);
                         $scope.snitchReferee = findById($scope.persons, response.data.snitchReferee);
                         $scope.snitch = findById($scope.persons, response.data.snitch);
                     }, function error(response) {
@@ -44,10 +41,7 @@ angular.module('refScheduler')
                 $scope.teamB = '';
                 $scope.pitch = '';
                 $scope.headReferee = '';
-                $scope.assistantRefereeA = '';
-                $scope.assistantRefereeB = '';
-                $scope.assistantRefereeC = '';
-                $scope.assistantRefereeD = '';
+                $scope.assistantReferees = [];
                 $scope.snitchReferee = '';
                 $scope.snitch = '';
             }
@@ -62,10 +56,7 @@ angular.module('refScheduler')
                 pitch: $scope.pitch,
                 timeslot: $scope.timeslot,
                 headReferee: $scope.headReferee,
-                assistantRefereeA: $scope.assistantRefereeA,
-                assistantRefereeB: $scope.assistantRefereeB,
-                assistantRefereeC: $scope.assistantRefereeC,
-                assistantRefereeD: $scope.assistantRefereeD,
+                assistantReferees: $scope.assistantReferees,
                 snitchReferee: $scope.snitchReferee,
                 snitch: $scope.snitch
             })

@@ -12,7 +12,7 @@ public class PersonBuilder {
     private Level headRefereeLevel;
     private Level assistantRefereeLevel;
     private Level snitchRefereeLevel;
-    private Boolean snitch;
+    private Level snitch;
 
     private PersonBuilder() {
 
@@ -57,7 +57,7 @@ public class PersonBuilder {
         return this;
     }
 
-    public PersonBuilder withSnitch(final Boolean snitch) {
+    public PersonBuilder withSnitch(final Level snitch) {
         this.snitch = snitch;
         return this;
     }
@@ -71,7 +71,7 @@ public class PersonBuilder {
         person.setHeadRefereeLevel(headRefereeLevel);
         person.setAssistantRefereeLevel(assistantRefereeLevel);
         person.setSnitchRefereeLevel(snitchRefereeLevel);
-        person.setSnitch(snitch);
+        person.setSnitchLevel(snitch);
         return person;
     }
 }

@@ -1,5 +1,6 @@
 package refscheduler.scheduler;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import refscheduler.person.Person;
 import refscheduler.person.PersonService;
 import refscheduler.team.TeamService;
 import refscheduler.timeslot.Timeslot;
+import refscheduler.util.csvdata.DataGenerator;
 
 import java.util.List;
 import java.util.Map;
@@ -38,6 +40,14 @@ public class SchedulingEngineTest {
 
     @Autowired
     private AffiliationService affiliationService;
+
+    @Autowired
+    private DataGenerator generator;
+
+    @Before
+    public void setUp() {
+        generator.generateDummyData();
+    }
 
     @Test
     public void simpleSchedule() {

@@ -1,4 +1,4 @@
-package refscheduler.testdata;
+package refscheduler.util.csvdata;
 
 import org.joda.time.DateTime;
 import refscheduler.affiliation.AffiliationType;
@@ -23,7 +23,7 @@ public class CsvUtils {
         public Level hrLevel;
         public Level arLevel;
         public Level srLevel;
-        public boolean snitch;
+        public Level snitch;
 
         public PeopleLine(String[] input) {
             int line = 0;
@@ -34,7 +34,7 @@ public class CsvUtils {
             hrLevel = Level.valueOf(input[line++]);
             arLevel = Level.valueOf(input[line++]);
             srLevel = Level.valueOf(input[line++]);
-            snitch = Boolean.parseBoolean(input[line]);
+            snitch = Level.valueOf(input[line]);
         }
     }
 
@@ -74,23 +74,59 @@ public class CsvUtils {
         }
     }
 
+    public static class GameLine {
+        public DateTime time;
+        public Long pitch;
+        public String teamA;
+        public String teamB;
+        public String headReferee;
+        public String assistantRefereeA;
+        public String assistantRefereeB;
+        public String assistantRefereeC;
+        public String assistantRefereeD;
+        public String snitchReferee;
+        public String snitch;
+
+        public GameLine(String[] input) {
+            int line = 0;
+
+            time = DateTime.parse(input[line++]);
+            pitch = Long.parseLong(input[line++]);
+            teamA = input[line++];
+            teamB = input[line++];
+            if (input.length > 4) {
+                headReferee = input[line++];
+                assistantRefereeA = input[line++];
+                assistantRefereeB = input[line++];
+                assistantRefereeC = input[line++];
+                assistantRefereeD = input[line++];
+                snitchReferee = input[line++];
+                snitch = input[line];
+            }
+        }
+    }
+
     public List<String[]> readPeopleLines() {
-        return readCsvFile("data/people.csv");
+        return readCsvFileFromClasspath("data/people.csv");
     }
 
     public List<String[]> readTeamLines() {
-        return readCsvFile("data/teams.csv");
+        return readCsvFileFromClasspath("data/teams.csv");
     }
 
     public List<String[]> readAffiliationLines() {
-        return readCsvFile("data/affiliations.csv");
+        return readCsvFileFromClasspath("data/affiliations.csv");
     }
 
     public List<String[]> readTimeslotLines() {
-        return readCsvFile("data/timeslots.csv");
+        return readCsvFileFromClasspath("data/timeslots.csv");
     }
 
-    private List<String[]> readCsvFile(String fileName) {
+    public List<String[]> readGameLines() {
+        return readCsvFileFromClasspath("data/games.csv");
+    }
+
+    private List<String[]> readCsvFileFromClasspath(String fileName) {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource(fileName).getFile());
         List<String[]> lines = new ArrayList<>();

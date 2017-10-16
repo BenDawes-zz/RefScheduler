@@ -26,7 +26,7 @@ public class Person implements Comparable<Person> {
 
     private Level snitchRefereeLevel;
 
-    private Boolean snitch;
+    private Level snitchLevel;
 
     public Long getId() {
         return id;
@@ -84,12 +84,12 @@ public class Person implements Comparable<Person> {
         this.snitchRefereeLevel = snitchRefereeLevel;
     }
 
-    public Boolean getSnitch() {
-        return snitch;
+    public Level getSnitchLevel() {
+        return snitchLevel;
     }
 
-    public void setSnitch(Boolean snitch) {
-        this.snitch = snitch;
+    public void setSnitchLevel(Level snitchLevel) {
+        this.snitchLevel = snitchLevel;
     }
 
     @Override

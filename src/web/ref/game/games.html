@@ -43,10 +43,10 @@
                                 <th class="column-title" style="display: table-cell;">Team A</th>
                                 <th class="column-title" style="display: table-cell;">Team B</th>
                                 <th class="column-title" style="display: table-cell;">HR</th>
-                                <th class="column-title" style="display: table-cell;">AR A</th>
-                                <th class="column-title" style="display: table-cell;">AR B</th>
-                                <th class="column-title" style="display: table-cell;">AR C</th>
-                                <th class="column-title" style="display: table-cell;">AR D</th>
+                                <th class="column-title" style="display: table-cell;">AR</th>
+                                <th class="column-title" style="display: table-cell;">AR</th>
+                                <th class="column-title" style="display: table-cell;">AR</th>
+                                <th class="column-title" style="display: table-cell;">AR</th>
                                 <th class="column-title" style="display: table-cell;">SR</th>
                                 <th class="column-title" style="display: table-cell;">Snitch</th>
                                 <th class="column-title" style="display: table-cell;">Pitch</th>
@@ -64,12 +64,12 @@
                                 <td class=" ">{{game.teamA.name}}</td>
                                 <td class=" ">{{game.teamB.name}} </td>
                                 <td class=" ">{{game.headReferee.firstName + " " + game.headReferee.lastName}} </td>
-                                <td class=" ">{{game.assistantRefereeA.firstName + " " + game.assistantRefereeA.lastName}} </td>
-                                <td class=" ">{{game.assistantRefereeB.firstName + " " + game.assistantRefereeB.lastName}} </td>
-                                <td class=" ">{{game.assistantRefereeC.firstName + " " + game.assistantRefereeC.lastName}} </td>
-                                <td class=" ">{{game.assistantRefereeD.firstName + " " + game.assistantRefereeD.lastName}} </td>
+                                <td class=" ">{{game.assistantReferees[0].firstName + " " + game.assistantReferees[0].lastName}} </td>
+                                <td class=" ">{{game.assistantReferees[1].firstName + " " + game.assistantReferees[1].lastName}} </td>
+                                <td class=" ">{{game.assistantReferees[2].firstName + " " + game.assistantReferees[2].lastName}} </td>
+                                <td class=" ">{{game.assistantReferees[3].firstName + " " + game.assistantReferees[3].lastName}} </td>
                                 <td class=" ">{{game.snitchReferee.firstName + " " + game.snitchReferee.lastName}} </td>
-                                <td class=" ">{{game.snitch.firstName + " " + game.snitch.lastName}} </td>
+                                <td class=" ">{{game.snitchLevel.firstName + " " + game.snitchLevel.lastName}} </td>
                                 <td class=" ">{{game.pitch}} </td>
                                 <td class=" last"><a ng-href="#/game/{{game.id}}">Edit</a></td>
                                 <td class=" last" ng-click="delete(game);">Delete</td>

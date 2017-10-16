@@ -1,12 +1,21 @@
 package refscheduler.game;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import refscheduler.affiliation.AffiliationService;
 import refscheduler.person.PersonService;
 import refscheduler.scheduler.SchedulingEngine;
+import refscheduler.timeslot.Timeslot;
+import refscheduler.util.csvdata.DataGenerator;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * game controller.
@@ -17,6 +26,9 @@ public class GameController {
 
     @Autowired
     private SchedulingEngine schedulingEngine;
+
+    @Autowired
+    private DataGenerator dataGenerator;
 
     @Autowired
     private GameService gameService;
@@ -49,8 +61,17 @@ public class GameController {
 
     @GetMapping(path = "/schedule")
     public void scheduleAllGames() {
-        schedulingEngine.scheduleGames(gameService.getAllGamesByTimeslot(),
+        Map<Timeslot, List<Game>> scheduledGames = schedulingEngine.scheduleGames(gameService.getAllGamesByTimeslot(),
                 personService.getAll(),
                 affiliationService.getAllAffiliations());
+
+        for (List<Game> games : scheduledGames.values()) {
+            games.forEach(gameService::save);
+        }
+    }
+
+    @GetMapping(path = "/dummy-data")
+    public void createDummyData() {
+        dataGenerator.generateDummyData();
     }
 }

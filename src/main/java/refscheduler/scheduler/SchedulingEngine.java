@@ -5,8 +5,8 @@ import refscheduler.affiliation.Affiliation;
 import refscheduler.game.Game;
 import refscheduler.person.Person;
 import refscheduler.timeslot.Timeslot;
+import refscheduler.util.HungarianAlgorithm;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +20,9 @@ import static java.util.stream.Collectors.toList;
 @Service("schedulingEngine")
 public class SchedulingEngine {
 
+    private static final double HIGH_COST = 1000;
+    private static final int MAX_ARS_PER_GAME = 4;
+
     public Map<Timeslot, List<Game>> scheduleGames(final Map<Timeslot, List<Game>> allGames,
                               final List<Person> persons,
                               final List<Affiliation> affiliations) {
@@ -32,36 +35,94 @@ public class SchedulingEngine {
     }
 
     public List<Game> scheduleTimeslot(List<Game> games, List<Person> people, List<Affiliation> affiliations) {
-        List<Person> usedPeople = new ArrayList<>();
+        // Create cost matrix from games and people
+        double[][] costMatrix = createCostMatrix(games, people, affiliations, 3);
 
-        for (Game game : games) {
-            List<Person> unavailablePeople = affiliations.stream()
-                    .filter(x -> game.getTeamA().equals(x.getTeam())
-                            || game.getTeamB().equals(x.getTeam())
-                            || usedPeople.contains(x.getPerson()))
-                    .map(Affiliation::getPerson)
+        // Solve cost matrix
+        HungarianAlgorithm hungarianAlgorithm = new HungarianAlgorithm(costMatrix);
+        int[] assignments = hungarianAlgorithm.execute();
+
+        // Convert back to assignments
+        return parseAssignments(assignments, games, people, 3);
+    }
+
+    private double[][] createCostMatrix(final List<Game> games, final List<Person> people, final List<Affiliation> affiliations, final int arsPerGame) {
+        int numberOfOfficialsPerGame = (3 + arsPerGame);
+        int numberOfOfficialSlotsRequired = games.size() * numberOfOfficialsPerGame;
+        int numberOfOfficialsAvailable = people.size();
+        
+        if (numberOfOfficialsAvailable < numberOfOfficialSlotsRequired) {
+            throw new IllegalArgumentException("Not enough referees to schedule");
+        }
+        
+        double[][] costMatrix = new double[numberOfOfficialsAvailable][numberOfOfficialsAvailable];
+
+        // i-axis is officials available
+        for (int i = 0; i < numberOfOfficialsAvailable; i++) {
+            Person currentOfficial = people.get(i);
+            List<Affiliation> currentAffiliations = affiliations
+                    .stream()
+                    .filter(affiliation -> affiliation.getPerson().equals(currentOfficial))
                     .collect(toList());
 
-            List<Person> potentialPeople = people.stream()
-                    .filter(x -> !unavailablePeople.contains(x))
-                    .collect(toList());
+            // jk-axis is games to assign
+            for (int j = 0; j < games.size(); j++) {
+                Game currentGame = games.get(j);
+                List<Affiliation> affiliationsForCurrentGame = currentAffiliations
+                        .stream()
+                        .filter(affiliation -> currentGame.involvesTeam(affiliation.getTeam()))
+                        .collect(toList());
 
-            if (potentialPeople.size() >= 6) {
-                game.setHeadReferee(potentialPeople.get(0));
-                usedPeople.add(potentialPeople.get(0));
-                game.setAssistantRefereeA(potentialPeople.get(1));
-                usedPeople.add(potentialPeople.get(1));
-                game.setAssistantRefereeB(potentialPeople.get(2));
-                usedPeople.add(potentialPeople.get(2));
-                game.setAssistantRefereeC(potentialPeople.get(3));
-                usedPeople.add(potentialPeople.get(3));
-                game.setSnitchReferee(potentialPeople.get(4));
-                usedPeople.add(potentialPeople.get(4));
-                game.setSnitch(potentialPeople.get(5));
-                usedPeople.add(potentialPeople.get(5));
+                for (int k = 0; k < numberOfOfficialsPerGame; k++) {
+                    double cost;
+
+                    if (affiliationsForCurrentGame.size() > 0) {
+                        cost = HIGH_COST;
+                    } else {
+                        if (k == 0) {
+                            cost = currentOfficial.getHeadRefereeLevel().level();
+                        } else if (k > 0 && k <= arsPerGame) {
+                            cost = currentOfficial.getAssistantRefereeLevel().level();
+                        } else if (k == numberOfOfficialsPerGame - 2) {
+                            cost = currentOfficial.getSnitchRefereeLevel().level();
+                        } else {
+                            cost = currentOfficial.getSnitchLevel().level();
+                        }
+                    }
+
+                    costMatrix[i][(j * numberOfOfficialsPerGame) + k] = cost;
+                }
             }
         }
+        
+        return costMatrix;
+    }
 
+    private List<Game> parseAssignments(final int[] assignments, final List<Game> games, final List<Person> people, final int arsPerGame) {
+        int numberOfOfficialsPerGame = arsPerGame + 3;
+        int numberOfOfficialsRequired = numberOfOfficialsPerGame * games.size();
+        for (int i = 0; i < assignments.length; i++) {
+            int assignedOfficialSlot = assignments[i];
+
+            if (assignedOfficialSlot >= numberOfOfficialsRequired) {
+                continue;
+            }
+
+            Person currentPerson = people.get(i);
+            int gameIndex = assignedOfficialSlot / numberOfOfficialsPerGame;
+            int exactOfficialSlot = assignedOfficialSlot - (gameIndex * numberOfOfficialsPerGame);
+            Game game = games.get(gameIndex);
+
+            if (exactOfficialSlot == 0) {
+                game.setHeadReferee(currentPerson);
+            } else if (exactOfficialSlot > 0 && exactOfficialSlot <= arsPerGame) {
+                game.addAssistantReferee(currentPerson);
+            } else if (exactOfficialSlot == numberOfOfficialsPerGame - 2) {
+                game.setSnitchReferee(currentPerson);
+            } else {
+                game.setSnitch(currentPerson);
+            }
+        }
         return games;
     }
 

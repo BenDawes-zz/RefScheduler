@@ -75,4 +75,7 @@ refScheduler.controller('mainCtrl', ['$scope', 'dataService', function($scope, d
     $scope.schedule = function() {
         dataService.get('game/schedule');
     };
+    $scope.dummyData = function() {
+        dataService.get('game/dummy-data');
+    };
 }]);

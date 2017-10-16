@@ -1,5 +1,6 @@
 package refscheduler.timeslot;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import refscheduler.util.DozerMapper;
@@ -28,6 +29,12 @@ public class TimeslotService {
 
     public Timeslot getTimeslot(final Long timeslotId) {
         final TimeslotEntity entity = timeslotRepository.findOne(timeslotId);
+
+        return mapper.map(entity, Timeslot.class);
+    }
+
+    public Timeslot getTimeslotByTime(final DateTime time) {
+        final TimeslotEntity entity = timeslotRepository.findByTime(time.toDate());
 
         return mapper.map(entity, Timeslot.class);
     }

@@ -5,13 +5,19 @@ package refscheduler.person;
  */
 public enum Level {
 
-    LEVEL_1,
+    LEVEL_1 (1),
+    LEVEL_2 (2),
+    LEVEL_3 (3),
+    LEVEL_4 (4),
+    LEVEL_5 (5);
 
-    LEVEL_2,
+    private final int level;
 
-    LEVEL_3,
+    Level(final int level) {
+        this.level = level;
+    }
 
-    LEVEL_4,
-
-    LEVEL_5
+    public int level() {
+        return level;
+    }
 }

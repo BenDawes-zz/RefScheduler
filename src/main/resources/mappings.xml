@@ -53,8 +53,8 @@
             <b>snitchReferee</b>
         </field-exclude>
         <field-exclude>
-            <a>snitch</a>
-            <b>snitch</b>
+            <a>snitchLevel</a>
+            <b>snitchLevel</b>
         </field-exclude>
     </mapping>
 </mappings>

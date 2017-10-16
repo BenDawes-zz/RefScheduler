@@ -7,8 +7,18 @@ import refscheduler.person.PersonEntity;
 import refscheduler.team.TeamEntity;
 import refscheduler.timeslot.TimeslotEntity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * game entity.
@@ -41,21 +51,12 @@ public class GameEntity {
     @JoinColumn(name = "HEAD_REFEREE_ID")
     private PersonEntity headReferee;
 
-    @ManyToOne
-    @JoinColumn(name = "ASSISTANT_REFEREE_A_ID")
-    private PersonEntity assistantRefereeA;
-
-    @ManyToOne
-    @JoinColumn(name = "ASSISTANT_REFEREE_B_ID")
-    private PersonEntity assistantRefereeB;
-
-    @ManyToOne
-    @JoinColumn(name = "ASSISTANT_REFEREE_C_ID")
-    private PersonEntity assistantRefereeC;
-
-    @ManyToOne
-    @JoinColumn(name = "ASSISTANT_REFEREE_D_ID")
-    private PersonEntity assistantRefereeD;
+    @ManyToMany
+    @JoinTable(
+            name = "GAME_ASSISTANT_REFEREE",
+            joinColumns = @JoinColumn(name = "GAME_ID", referencedColumnName = "GAME_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PERSON_ID", referencedColumnName = "PERSON_ID"))
+    private List<PersonEntity> assistantReferees;
 
     @ManyToOne
     @JoinColumn(name = "SNITCH_REFEREE_ID")
@@ -108,36 +109,12 @@ public class GameEntity {
         this.headReferee = headReferee;
     }
 
-    public PersonEntity getAssistantRefereeA() {
-        return assistantRefereeA;
+    public List<PersonEntity> getAssistantReferees() {
+        return assistantReferees;
     }
 
-    public void setAssistantRefereeA(PersonEntity assistantRefereeA) {
-        this.assistantRefereeA = assistantRefereeA;
-    }
-
-    public PersonEntity getAssistantRefereeB() {
-        return assistantRefereeB;
-    }
-
-    public void setAssistantRefereeB(PersonEntity assistantRefereeB) {
-        this.assistantRefereeB = assistantRefereeB;
-    }
-
-    public PersonEntity getAssistantRefereeC() {
-        return assistantRefereeC;
-    }
-
-    public void setAssistantRefereeC(PersonEntity assistantRefereeC) {
-        this.assistantRefereeC = assistantRefereeC;
-    }
-
-    public PersonEntity getAssistantRefereeD() {
-        return assistantRefereeD;
-    }
-
-    public void setAssistantRefereeD(PersonEntity assistantRefereeD) {
-        this.assistantRefereeD = assistantRefereeD;
+    public void setAssistantReferees(final List<PersonEntity> assistantReferees) {
+        this.assistantReferees = assistantReferees;
     }
 
     public PersonEntity getSnitchReferee() {
@@ -178,10 +155,7 @@ public class GameEntity {
                 .append(teamB, that.teamB)
                 .append(timeslot, that.timeslot)
                 .append(headReferee, that.headReferee)
-                .append(assistantRefereeA, that.assistantRefereeA)
-                .append(assistantRefereeB, that.assistantRefereeB)
-                .append(assistantRefereeC, that.assistantRefereeC)
-                .append(assistantRefereeD, that.assistantRefereeD)
+                .append(assistantReferees, that.assistantReferees)
                 .append(snitchReferee, that.snitchReferee)
                 .append(snitch, that.snitch)
                 .append(pitch, that.pitch)
@@ -196,10 +170,7 @@ public class GameEntity {
                 .append(teamB)
                 .append(timeslot)
                 .append(headReferee)
-                .append(assistantRefereeA)
-                .append(assistantRefereeB)
-                .append(assistantRefereeC)
-                .append(assistantRefereeD)
+                .append(assistantReferees)
                 .append(snitchReferee)
                 .append(snitch)
                 .append(pitch)
@@ -214,10 +185,7 @@ public class GameEntity {
                 .append("teamB", teamB)
                 .append("timeslot", timeslot)
                 .append("headReferee", headReferee)
-                .append("assistantRefereeA", assistantRefereeA)
-                .append("assistantRefereeB", assistantRefereeB)
-                .append("assistantRefereeC", assistantRefereeC)
-                .append("assistantRefereeD", assistantRefereeD)
+                .append("assistantReferees", assistantReferees)
                 .append("snitchReferee", snitchReferee)
                 .append("snitch", snitch)
                 .append("pitch", pitch)
