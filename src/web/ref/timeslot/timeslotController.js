@@ -36,6 +36,22 @@ angular.module('refScheduler')
           });
         };
 
+        $scope.submitAndCreateAnother = function() {
+          var dateTime = new Date($scope.time);
+          dataService.post('timeslot',
+            {
+                id: $scope.id,
+                time: dateTime.toISOString()
+            })
+          .then(function success(response) {
+                window.alert("Create successful");
+                $scope.time = '';
+          }, function error(response) {
+                $scope.errors = response.status;
+                window.alert("Create failed");
+          });
+        };
+
         $scope.delete = function(timeslot) {
             dataService.delete('timeslot/' + timeslot.id)
             .then(function success(response) {

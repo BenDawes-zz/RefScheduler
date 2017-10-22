@@ -44,4 +44,8 @@ public class TimeslotService {
 
         return mapper.map(entities, Timeslot.class);
     }
+
+    public void delete(final Long timeslotId) {
+        timeslotRepository.delete(timeslotId);
+    }
 }

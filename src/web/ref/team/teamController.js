@@ -38,6 +38,23 @@ angular.module('refScheduler')
           });
         };
 
+        $scope.submitAndCreateAnother = function() {
+          dataService.post('team',
+            {
+                id: $scope.id,
+                name: $scope.name,
+                location: $scope.location
+            })
+          .then(function success(response) {
+                window.alert("Create successful");
+                $scope.name = '';
+                $scope.location = '';
+          }, function error(response) {
+                $scope.errors = response.status;
+                window.alert("Create failed");
+          });
+        };
+
         $scope.delete = function(team) {
             dataService.delete('team/' + team.id)
             .then(function success(response) {

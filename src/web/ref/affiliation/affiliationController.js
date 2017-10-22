@@ -47,6 +47,25 @@ angular.module('refScheduler')
           });
         };
 
+        $scope.submitAndCreateAnother = function() {
+          dataService.post('affiliation',
+            {
+                id: $scope.id,
+                team: $scope.team,
+                person: $scope.person,
+                affiliation: $scope.affiliationType,
+            })
+          .then(function success(response) {
+                window.alert("Create successful");
+                $scope.team = '';
+                $scope.person = '';
+                $scope.affiliationType = '';
+          }, function error(response) {
+                $scope.errors = response.status;
+                window.alert("Create failed");
+          });
+        };
+
         $scope.delete = function(affiliation) {
             dataService.delete('affiliation/' + affiliation.id)
             .then(function success(response) {

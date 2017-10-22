@@ -53,6 +53,33 @@ angular.module('refScheduler')
           });
         };
 
+        $scope.submitAndCreateAnother = function() {
+          dataService.post('person',
+            {
+                id: $scope.id,
+                firstName: $scope.firstName,
+                lastName: $scope.lastName,
+                emailAddress: $scope.email,
+                headRefereeLevel: $scope.hrLevel,
+                assistantRefereeLevel: $scope.arLevel,
+                snitchRefereeLevel: $scope.srLevel,
+                snitch: $scope.snitch
+            })
+          .then(function success(response) {
+                window.alert("Create successful");
+                $scope.firstName = '';
+                $scope.lastName = '';
+                $scope.email = '';
+                $scope.hrLevel = '';
+                $scope.arLevel = '';
+                $scope.srLevel = '';
+                $scope.snitch = '';
+          }, function error(response) {
+                $scope.errors = response.status;
+                window.alert("Create failed");
+          });
+        };
+
         $scope.delete = function(person) {
             dataService.delete('person/' + person.id)
             .then(function success(response) {

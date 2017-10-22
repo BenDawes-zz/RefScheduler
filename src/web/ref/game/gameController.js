@@ -77,6 +77,31 @@ angular.module('refScheduler')
             });
         };
 
+        $scope.submitAndCreateAnother = function () {
+            dataService.post('game',
+            {
+                id: $scope.id,
+                teamA: $scope.teamA,
+                teamB: $scope.teamB,
+                pitch: $scope.pitch,
+                timeslot: $scope.timeslot,
+                headReferee: $scope.headReferee,
+                assistantReferees: $scope.assistantReferees,
+                snitchReferee: $scope.snitchReferee,
+                snitch: $scope.snitch
+            })
+          .then(function success(response) {
+                window.alert("Create successful");
+                $scope.teamA = '';
+                $scope.teamB = '';
+                $scope.pitch = '';
+                $scope.timeslot = '';
+          }, function error(response) {
+                $scope.errors = response.status;
+                window.alert("Create failed");
+          });
+        }
+
         function findById(list, findItem) {
             if (list && findItem) {
                 for (var i = 0; i < list.length; i++) {

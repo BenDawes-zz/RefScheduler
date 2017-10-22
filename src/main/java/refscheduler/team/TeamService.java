@@ -43,4 +43,7 @@ public class TeamService {
 
         return mapper.map(entity, Team.class);
     }
+    public void delete(final Long teamId) {
+        teamRepository.delete(teamId);
+    }
 }
