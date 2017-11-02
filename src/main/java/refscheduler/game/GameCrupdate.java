@@ -3,6 +3,7 @@ package refscheduler.game;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import sun.security.util.Cache;
 
 /**
  * game Create/Update DTO.
@@ -131,61 +132,16 @@ public class GameCrupdate {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-
-        if (o == null || getClass() != o.getClass()) return false;
-
-        GameCrupdate game = (GameCrupdate) o;
-
-        return new EqualsBuilder()
-                .append(id, game.id)
-                .append(timeslot, game.timeslot)
-                .append(teamA, game.teamA)
-                .append(teamB, game.teamB)
-                .append(headReferee, game.headReferee)
-                .append(assistantRefereeA, game.assistantRefereeA)
-                .append(assistantRefereeB, game.assistantRefereeB)
-                .append(assistantRefereeC, game.assistantRefereeC)
-                .append(assistantRefereeD, game.assistantRefereeD)
-                .append(snitchReferee, game.snitchReferee)
-                .append(snitch, game.snitch)
-                .append(pitch, game.pitch)
-                .isEquals();
+        return EqualsBuilder.reflectionEquals(this, o);
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-                .append(id)
-                .append(timeslot)
-                .append(teamA)
-                .append(teamB)
-                .append(headReferee)
-                .append(assistantRefereeA)
-                .append(assistantRefereeB)
-                .append(assistantRefereeC)
-                .append(assistantRefereeD)
-                .append(snitchReferee)
-                .append(snitch)
-                .append(pitch)
-                .toHashCode();
+        return HashCodeBuilder.reflectionHashCode(this);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .append("id", id)
-                .append("timeslot", timeslot)
-                .append("teamA", teamA)
-                .append("teamB", teamB)
-                .append("headReferee", headReferee)
-                .append("assistantRefereeA", assistantRefereeA)
-                .append("assistantRefereeB", assistantRefereeB)
-                .append("assistantRefereeC", assistantRefereeC)
-                .append("assistantRefereeD", assistantRefereeD)
-                .append("snitchReferee", snitchReferee)
-                .append("snitch", snitch)
-                .append("pitch", pitch)
-                .toString();
+        return ToStringBuilder.reflectionToString(this);
     }
 }

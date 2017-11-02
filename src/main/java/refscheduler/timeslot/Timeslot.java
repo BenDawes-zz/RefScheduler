@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.joda.time.DateTime;
 import refscheduler.util.JsonDateTimeDeserializer;
 import refscheduler.util.JsonDateTimeSerializer;
@@ -37,23 +38,16 @@ public class Timeslot {
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) return true;
-
-        if (o == null || getClass() != o.getClass()) return false;
-
-        final Timeslot that = (Timeslot) o;
-
-        return new EqualsBuilder()
-                .append(id, that.id)
-                .append(time, that.time)
-                .isEquals();
+        return EqualsBuilder.reflectionEquals(this, o);
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-                .append(id)
-                .append(time)
-                .toHashCode();
+        return HashCodeBuilder.reflectionHashCode(this);
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 }

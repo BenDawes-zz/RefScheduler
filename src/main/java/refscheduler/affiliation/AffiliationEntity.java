@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import refscheduler.person.PersonEntity;
 import refscheduler.team.TeamEntity;
+import refscheduler.tournament.TournamentEntity;
 
 import javax.persistence.*;
 
@@ -19,6 +20,10 @@ public class AffiliationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "AFFILIATION_ID")
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "TOURNAMENT_ID")
+    private TournamentEntity tournament;
 
     @ManyToOne
     @JoinColumn(name = "PERSON_ID")
@@ -37,6 +42,14 @@ public class AffiliationEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public TournamentEntity getTournament() {
+        return tournament;
+    }
+
+    public void setTournament(TournamentEntity tournament) {
+        this.tournament = tournament;
     }
 
     public PersonEntity getPerson() {

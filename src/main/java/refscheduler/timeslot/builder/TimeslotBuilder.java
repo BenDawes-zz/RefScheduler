@@ -8,7 +8,7 @@ public class TimeslotBuilder {
     private Long id;
     private DateTime time;
 
-    private TimeslotBuilder () {
+    private TimeslotBuilder() {
 
     }
 

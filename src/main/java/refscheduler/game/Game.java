@@ -7,7 +7,9 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import refscheduler.person.Person;
 import refscheduler.team.Team;
 import refscheduler.timeslot.Timeslot;
+import refscheduler.tournament.Tournament;
 
+import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,10 +20,16 @@ public class Game {
 
     private Long id;
 
+    @NotNull
+    private Tournament tournament;
+
+    @NotNull
     private Timeslot timeslot;
 
+    @NotNull
     private Team teamA;
 
+    @NotNull
     private Team teamB;
 
     private Person headReferee;
@@ -40,6 +48,14 @@ public class Game {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Tournament getTournament() {
+        return tournament;
+    }
+
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
     }
 
     public Timeslot getTimeslot() {
@@ -131,53 +147,17 @@ public class Game {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Game game = (Game) o;
-
-        return new EqualsBuilder()
-                .append(id, game.id)
-                .append(timeslot, game.timeslot)
-                .append(teamA, game.teamA)
-                .append(teamB, game.teamB)
-                .append(headReferee, game.headReferee)
-                .append(assistantReferees, game.assistantReferees)
-                .append(snitchReferee, game.snitchReferee)
-                .append(snitch, game.snitch)
-                .append(pitch, game.pitch)
-                .isEquals();
+        return EqualsBuilder.reflectionEquals(this, o);
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-                .append(id)
-                .append(timeslot)
-                .append(teamA)
-                .append(teamB)
-                .append(headReferee)
-                .append(assistantReferees)
-                .append(snitchReferee)
-                .append(snitch)
-                .append(pitch)
-                .toHashCode();
+        return HashCodeBuilder.reflectionHashCode(this);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .append("id", id)
-                .append("timeslot", timeslot)
-                .append("teamA", teamA)
-                .append("teamB", teamB)
-                .append("headReferee", headReferee)
-                .append("assistantReferees", assistantReferees)
-                .append("snitchReferee", snitchReferee)
-                .append("snitch", snitch)
-                .append("pitch", pitch)
-                .toString();
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

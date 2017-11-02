@@ -57,4 +57,12 @@
             <b>snitchLevel</b>
         </field-exclude>
     </mapping>
+    <mapping>
+        <class-a>refscheduler.affiliation.Affiliation</class-a>
+        <class-b>refscheduler.affiliation.AffiliationEntity</class-b>
+        <field>
+            <a>tournamentId</a>
+            <b>tournament.id</b>
+        </field>
+    </mapping>
 </mappings>

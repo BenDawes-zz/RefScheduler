@@ -6,6 +6,8 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import refscheduler.person.Person;
 import refscheduler.team.Team;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Team Affiliation Get DTO.
  */
@@ -13,8 +15,13 @@ public class Affiliation implements Comparable<Affiliation> {
 
     private Long id;
 
+    @NotNull
+    private Long tournamentId;
+
+    @NotNull
     private Person person;
 
+    @NotNull
     private Team team;
 
     private AffiliationType affiliation;
@@ -25,6 +32,14 @@ public class Affiliation implements Comparable<Affiliation> {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getTournamentId() {
+        return tournamentId;
+    }
+
+    public void setTournamentId(Long tournamentId) {
+        this.tournamentId = tournamentId;
     }
 
     public Person getPerson() {

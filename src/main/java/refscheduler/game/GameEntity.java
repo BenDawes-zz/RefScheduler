@@ -143,52 +143,16 @@ public class GameEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-
-        if (o == null || getClass() != o.getClass()) return false;
-
-        GameEntity that = (GameEntity) o;
-
-        return new EqualsBuilder()
-                .append(id, that.id)
-                .append(teamA, that.teamA)
-                .append(teamB, that.teamB)
-                .append(timeslot, that.timeslot)
-                .append(headReferee, that.headReferee)
-                .append(assistantReferees, that.assistantReferees)
-                .append(snitchReferee, that.snitchReferee)
-                .append(snitch, that.snitch)
-                .append(pitch, that.pitch)
-                .isEquals();
+        return EqualsBuilder.reflectionEquals(this, o);
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-                .append(id)
-                .append(teamA)
-                .append(teamB)
-                .append(timeslot)
-                .append(headReferee)
-                .append(assistantReferees)
-                .append(snitchReferee)
-                .append(snitch)
-                .append(pitch)
-                .toHashCode();
+        return HashCodeBuilder.reflectionHashCode(this);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .append("id", id)
-                .append("teamA", teamA)
-                .append("teamB", teamB)
-                .append("timeslot", timeslot)
-                .append("headReferee", headReferee)
-                .append("assistantReferees", assistantReferees)
-                .append("snitchReferee", snitchReferee)
-                .append("snitch", snitch)
-                .append("pitch", pitch)
-                .toString();
+        return ToStringBuilder.reflectionToString(this);
     }
 }

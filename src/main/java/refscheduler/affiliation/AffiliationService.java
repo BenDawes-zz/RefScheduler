@@ -1,10 +1,14 @@
 package refscheduler.affiliation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.stereotype.Service;
 import refscheduler.team.TeamEntity;
 import refscheduler.person.PersonRepository;
 import refscheduler.team.TeamRepository;
+import refscheduler.tournament.Tournament;
+import refscheduler.tournament.TournamentEntity;
+import refscheduler.tournament.TournamentRepository;
 import refscheduler.util.DozerMapper;
 
 import java.util.List;
@@ -22,10 +26,10 @@ public class AffiliationService {
     private AffiliationRepository affiliationRepository;
 
     @Autowired
-    private PersonRepository personRepository;
+    private TeamRepository teamRepository;
 
     @Autowired
-    private TeamRepository teamRepository;
+    private TournamentRepository tournamentRepository;
 
     public Affiliation getAffiliation(final Long affiliationId) {
         final AffiliationEntity entity = affiliationRepository.findOne(affiliationId);
@@ -49,6 +53,8 @@ public class AffiliationService {
 
     public Long save(final Affiliation affiliation) {
         final AffiliationEntity entity = mapper.map(affiliation, AffiliationEntity.class);
+        final TournamentEntity tournament = tournamentRepository.findOne(affiliation.getTournamentId());
+        entity.setTournament(tournament);
 
         affiliationRepository.save(entity);
 
