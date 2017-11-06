@@ -1,202 +1,130 @@
 Player Name, Team Name, Affiliation
-John Doe,Bangor Broken Broomsticks,PLAYER
-Kevin Lee,Brizzlebears,PLAYER
-Arlene Robinson,Brizzlebees,PLAYER
-Cecilia Reyes,Cambridge University Quidditch Club,PLAYER
-Robert Edwards,Central London Quidditch Club,PLAYER
-Ervin Gonzales,Chester Centurions,PLAYER
-Virginia Holland,Derby Union Quidditch,PLAYER
-Julian Baker,Durhamstrang,PLAYER
-Jake Hunter,Durham Direwolves,PLAYER
-Frankie Schneider,Exeter Eagles,PLAYER
-Juanita Rowe,Flying Chaucers,PLAYER
-Lisa Pearson,HogYork Horntails,PLAYER
-Victor Howell,Holyrood Hippogriffs Firsts,PLAYER
-Merle Barnett,Holyrood Hippogriffs Seconds,PLAYER
-Nathaniel Vasquez,Keele Squirrels,PLAYER
-Craig Valdez,Keele Krakens,PLAYER
-Marcella Chambers,Leeds Griffins Quidditch Team,PLAYER
-Harold Gutierrez,Leicester Thestrals,PLAYER
-Winston Rodgers,Liverpuddly Cannons,PLAYER
-Eduardo Wallace,Loughborough Longshots,PLAYER
-Patti Steele,Manchester Manticores,PLAYER
-Joel Hansen,Norwich Nifflers,PLAYER
-Glenda Haynes,Nottingham Nightmares,PLAYER
-Shaun Cross,Radcliffe Chimeras,PLAYER
-Alexander Hampton,Oxford Quidlings,PLAYER
-Tracy Cummings,Portsmouth Horntail Strikers,PLAYER
-Debra Lloyd,Preston Poltergeists,PLAYER
-Misty Simmons,Reading Rocs,PLAYER
-Angel Carpenter,Sheffield Squids,PLAYER
-Mary Richards,Sheffield Steelfins,PLAYER
-Jackie Hines,Southampton Quidditch Club Firsts,PLAYER
-Marsha Barber,Southampton Quidditch Club Seconds,PLAYER
-Janis Vargas,St Andrews Snidgets,PLAYER
-Joanna Mcbride,Swansea Seven Swans,PLAYER
-Archie Wolfe,The London Unspeakables,PLAYER
-Vernon Gonzalez,The London Unbreakables,PLAYER
-Raquel Torres,Tornadoes Quidditch Club,PLAYER
-Sonya Sparks,Tremough Quidditch Club,PLAYER
-Marcus Simon,Velociraptors QC,PLAYER
-Sheri Delgado,Warwick Quidditch Club,PLAYER
-Lyle Strickland,Werewolves of London,PLAYER
-Lucia Lawrence,Bangor Broken Broomsticks,PLAYER
-Paulette Ballard,Brizzlebears,PLAYER
-Phillip Moore,Brizzlebees,PLAYER
-Nick Hawkins,Cambridge University Quidditch Club,PLAYER
-Sherry Daniel,Central London Quidditch Club,PLAYER
-Grant Mendez,Chester Centurions,PLAYER
-Della Mathis,Derby Union Quidditch,PLAYER
-Stella Norris,Durhamstrang,PLAYER
-Stanley Reynolds,Durham Direwolves,PLAYER
-Drew Erickson,Exeter Eagles,PLAYER
-Maggie Thornton,Flying Chaucers,PLAYER
-Elena Sanders,HogYork Horntails,PLAYER
-Sergio Lewis,Holyrood Hippogriffs Firsts,PLAYER
-Marilyn Fitzgerald,Holyrood Hippogriffs Seconds,PLAYER
-Dave Evans,Keele Squirrels,PLAYER
-Jessie Bradley,Keele Krakens,PLAYER
-Melody Tucker,Leeds Griffins Quidditch Team,PLAYER
-Ramiro Jacobs,Leicester Thestrals,PLAYER
-Pablo Clark,Liverpuddly Cannons,PLAYER
-Paula Lane,Loughborough Longshots,PLAYER
-Tara Carter,Manchester Manticores,PLAYER
-Oscar Walsh,Norwich Nifflers,PLAYER
-Abel Bowen,Nottingham Nightmares,PLAYER
-Jessie Zimmerman,Radcliffe Chimeras,PLAYER
-Alton Brooks,Oxford Quidlings,PLAYER
-Aubrey Drake,Portsmouth Horntail Strikers,PLAYER
-Lola Miller,Preston Poltergeists,PLAYER
-Tonya Cunningham,Reading Rocs,PLAYER
-Darrel Vaughn,Sheffield Squids,PLAYER
-Lela Aguilar,Sheffield Steelfins,PLAYER
-Vicki Banks,Southampton Quidditch Club Firsts,PLAYER
-Todd Malone,Southampton Quidditch Club Seconds,PLAYER
-Jeannie Rodriquez,St Andrews Snidgets,PLAYER
-Barbara Baldwin,Swansea Seven Swans,PLAYER
-Maurice Ford,The London Unspeakables,PLAYER
-Rogelio Peterson,The London Unbreakables,PLAYER
-Anne Wheeler,Tornadoes Quidditch Club,PLAYER
-Hugh Ramos,Tremough Quidditch Club,PLAYER
-Gerald Summers,Velociraptors QC,PLAYER
-Grady Norman,Warwick Quidditch Club,PLAYER
-Madeline Morrison,Werewolves of London,PLAYER
-Teri Barrett,Bangor Broken Broomsticks,PLAYER
-Russell Daniels,Brizzlebears,PLAYER
-Sarah Gordon,Brizzlebees,PLAYER
-Leonard Brady,Cambridge University Quidditch Club,PLAYER
-Joshua Long,Central London Quidditch Club,PLAYER
-Lonnie Ortega,Chester Centurions,PLAYER
-Carolyn Sullivan,Derby Union Quidditch,PLAYER
-Lori Mason,Durhamstrang,PLAYER
-Marion Roberson,Durham Direwolves,PLAYER
-Terrence Armstrong,Exeter Eagles,PLAYER
-Darla Hale,Flying Chaucers,PLAYER
-Samantha Hart,HogYork Horntails,PLAYER
-Natasha Rios,Holyrood Hippogriffs Firsts,PLAYER
-Wendy Abbott,Holyrood Hippogriffs Seconds,PLAYER
-Rose Hammond,Keele Squirrels,PLAYER
-Francis Schultz,Keele Krakens,PLAYER
-Kimberly Stone,Leeds Griffins Quidditch Team,PLAYER
-Natalie Hunt,Leicester Thestrals,PLAYER
-Ray Montgomery,Liverpuddly Cannons,PLAYER
-Angelina Taylor,Loughborough Longshots,PLAYER
-Marianne Fuller,Manchester Manticores,PLAYER
-Gayle Clayton,Norwich Nifflers,PLAYER
-Katie Dean,Nottingham Nightmares,PLAYER
-Scott Clarke,Radcliffe Chimeras,PLAYER
-Simon Weaver,Oxford Quidlings,PLAYER
-Yvonne Gonzales,Portsmouth Horntail Strikers,PLAYER
-Jeanne Tyler,Preston Poltergeists,PLAYER
-Elijah Reese,Reading Rocs,PLAYER
-Vincent Nichols,Sheffield Squids,PLAYER
-Dale Harrison,Sheffield Steelfins,PLAYER
-Rufus Palmer,Southampton Quidditch Club Firsts,PLAYER
-Andrea Williamson,Southampton Quidditch Club Seconds,PLAYER
-Garrett Mathis,St Andrews Snidgets,PLAYER
-Darrel Fox,Swansea Seven Swans,PLAYER
-Winifred Carroll,The London Unspeakables,PLAYER
-Bert Schneider,The London Unbreakables,PLAYER
-Gregory Perry,Tornadoes Quidditch Club,PLAYER
-Sam Blake,Tremough Quidditch Club,PLAYER
-Doyle Luna,Velociraptors QC,PLAYER
-Lena Gibbs,Warwick Quidditch Club,PLAYER
-Leticia Hampton,Werewolves of London,PLAYER
-Charlene Montgomery,Bangor Broken Broomsticks,PLAYER
-Don French,Brizzlebears,PLAYER
-Audrey Park,Brizzlebees,PLAYER
-Tracy Copeland,Cambridge University Quidditch Club,PLAYER
-Herbert Caldwell,Central London Quidditch Club,PLAYER
-Anna Fields,Chester Centurions,PLAYER
-Rogelio Wells,Derby Union Quidditch,PLAYER
-Eleanor Jennings,Durhamstrang,PLAYER
-Stewart Robinson,Durham Direwolves,PLAYER
-Carole Spencer,Exeter Eagles,PLAYER
-Dennis Waters,Flying Chaucers,PLAYER
-Lionel Salazar,HogYork Horntails,PLAYER
-Jeannette Yates,Holyrood Hippogriffs Firsts,PLAYER
-Flora Morgan,Holyrood Hippogriffs Seconds,PLAYER
-Maria Adkins,Keele Squirrels,PLAYER
-Ashley Owen,Keele Krakens,PLAYER
-April Russell,Leeds Griffins Quidditch Team,PLAYER
-Roxanne Bridges,Leicester Thestrals,PLAYER
-Janis Hammond,Liverpuddly Cannons,PLAYER
-Leigh Jackson,Loughborough Longshots,PLAYER
-Guadalupe Thompson,Manchester Manticores,PLAYER
-Nichole Barker,Norwich Nifflers,PLAYER
-Minnie Kelly,Nottingham Nightmares,PLAYER
-Lisa Ramirez,Radcliffe Chimeras,PLAYER
-Lindsey Foster,Oxford Quidlings,PLAYER
-Shelley Bennett,Portsmouth Horntail Strikers,PLAYER
-Casey Campbell,Preston Poltergeists,PLAYER
-Gloria Knight,Reading Rocs,PLAYER
-Stephanie Garrett,Sheffield Squids,PLAYER
-Celia Townsend,Sheffield Steelfins,PLAYER
-Jermaine Perkins,Southampton Quidditch Club Firsts,PLAYER
-Jerald Cooper,Southampton Quidditch Club Seconds,PLAYER
-Heidi Burton,St Andrews Snidgets,PLAYER
-Cora Lane,Swansea Seven Swans,PLAYER
-Pat Holmes,The London Unspeakables,PLAYER
-Herman Pearson,The London Unbreakables,PLAYER
-Kim Manning,Tornadoes Quidditch Club,PLAYER
-Ramona Reynolds,Tremough Quidditch Club,PLAYER
-Theodore Wright,Velociraptors QC,PLAYER
-Shannon Jensen,Warwick Quidditch Club,PLAYER
-Eugene Bowen,Werewolves of London,PLAYER
-Lana Duncan,Bangor Broken Broomsticks,PLAYER
-Vickie Banks,Brizzlebears,PLAYER
-Norman Singleton,Brizzlebees,PLAYER
-Latoya Rogers,Cambridge University Quidditch Club,PLAYER
-Dominick Collins,Central London Quidditch Club,PLAYER
-Alan Bryan,Chester Centurions,PLAYER
-Molly Cain,Derby Union Quidditch,PLAYER
-Genevieve Fisher,Durhamstrang,PLAYER
-Karla Gordon,Durham Direwolves,PLAYER
-Karl Nash,Exeter Eagles,PLAYER
-Cody Smith,Flying Chaucers,PLAYER
-Laurence Franklin,HogYork Horntails,PLAYER
-Jason Farmer,Holyrood Hippogriffs Firsts,PLAYER
-Josh Cannon,Holyrood Hippogriffs Seconds,PLAYER
-Phil Gray,Keele Squirrels,PLAYER
-Kim Ortiz,Keele Krakens,PLAYER
-Terence Guerrero,Leeds Griffins Quidditch Team,PLAYER
-Blake Sanders,Leicester Thestrals,PLAYER
-Sandra Hardy,Liverpuddly Cannons,PLAYER
-Verna Ross,Loughborough Longshots,PLAYER
-Iris Sims,Manchester Manticores,PLAYER
-Grady Bowers,Norwich Nifflers,PLAYER
-Leona Black,Nottingham Nightmares,PLAYER
-Fredrick Huff,Radcliffe Chimeras,PLAYER
-Terry Fowler,Oxford Quidlings,PLAYER
-Al Colon,Portsmouth Horntail Strikers,PLAYER
-Lela Hunt,Preston Poltergeists,PLAYER
-Tabitha Lee,Reading Rocs,PLAYER
-Edward Hubbard,Sheffield Squids,PLAYER
-Wilma Benson,Sheffield Steelfins,PLAYER
-Cecelia Ferguson,Southampton Quidditch Club Firsts,PLAYER
-Stanley Patrick,Southampton Quidditch Club Seconds,PLAYER
-Mildred Hill,St Andrews Snidgets,PLAYER
-Stuart May,Swansea Seven Swans,PLAYER
-Ella Austin,The London Unspeakables,PLAYER
-Freddie Chavez,The London Unbreakables,PLAYER
-Santos Morris,Tornadoes Quidditch Club,PLAYER
+Tabitha Sparks,Radcliffe Chimeras,PERSONAL
+Tabitha Sparks,Oxford Quidlings,PERSONAL
+Pablo Moreno,Brizzlebees,PLAYER
+Pablo Moreno,Brizzlebears,PERSONAL
+Elliot Thomas,Tremough Quidditch Club,PLAYER
+Gavin Hughes,Tremough Quidditch Club,PLAYER
+Hugh White,Tremough Quidditch Club,PLAYER
+Sarah Kirby,Tremough Quidditch Club,PLAYER
+Alex Greenhalgh,Werewolves of London,PLAYER
+Alex Harrison,Werewolves of London,PLAYER
+Ben Honey,Werewolves of London,PLAYER
+Jan Mikołajczak,Werewolves of London,PLAYER
+Jan Mikołajczak,The London Unspeakables,PERSONAL
+Jan Mikołajczak,The London Unbreakables,PERSONAL
+Jan Mikołajczak,Radcliffe Chimeras,PERSONAL
+Simon Bidwell,Werewolves of London,PLAYER
+Simon Bidwell,Southampton Quidditch Club Firsts,PERSONAL
+Simon Bidwell,Southampton Quidditch Club Seconds,PERSONAL
+Elizabeth Lewin-Leigh,Oxford Quidlings,PLAYER
+Elizabeth Lewin-Leigh,Radcliffe Chimeras,PERSONAL
+Fran Morris,Oxford Quidlings,PLAYER
+Fran Morris,Radcliffe Chimeras,PERSONAL
+Chris Thomas,Reading Knights,PLAYER
+Chris Thomas,Werewolves of London,PERSONAL
+Finley Williams,Reading Knights,PLAYER
+Finley Williams,Brizzlebears,PERSONAL
+Finley Williams,Brizzlebees,PERSONAL
+Megan Ward,Reading Knights,PLAYER
+Molly Maurice-Smith,Reading Knights,PLAYER
+Peter Glenister,Reading Knights,PLAYER
+Alex Sheffield,Swansea Seven Swans,PLAYER
+Caroline Norrish,Swansea Seven Swans,PLAYER
+Charlie McLeod,Swansea Seven Swans,PLAYER
+Ffion Goodland,Swansea Seven Swans,PLAYER
+Kevin Carew,Swansea Seven Swans,PLAYER
+Agathe Delépine,Warwick Quidditch Club,PLAYER
+Joe Kernaghan,Warwick Quidditch Club,PLAYER
+Jonathan Purvis,Warwick Quidditch Club,PLAYER
+Sebastian Waters,Warwick Quidditch Club,PLAYER
+Jake Ruggier,Bournemouth Banshees,PLAYER
+Maddie Whiffen,Bournemouth Banshees,PLAYER
+Alix MA,Cambridge University Quidditch Club,PLAYER
+Robin Lamboll,Cambridge University Quidditch Club,PLAYER
+Robin Lamboll,Norwich Nifflers,PERSONAL
+Alex Griffith,Exeter Eagles,PLAYER
+Alison Powell,Exeter Eagles,PLAYER
+Charlie Strickland,Exeter Eagles,PLAYER
+Imogen Fleischman,Exeter Eagles,PLAYER
+Robert Pearce,Exeter Eagles,PLAYER
+Alice Walker,Radcliffe Chimeras,PLAYER
+Alice Walker,Oxford Quidlings,PERSONAL
+Alice Walker,Werewolves of London,PERSONAL
+Benjamin Pooley,Radcliffe Chimeras,PLAYER
+Benjamin Pooley,Oxford Quidlings,PERSONAL
+Benjamin Pooley,The London Unspeakables,PERSONAL
+Benjamin Pooley,The London Unbreakables,PERSONAL
+Christian Favreau,Radcliffe Chimeras,PLAYER
+Christian Favreau,Oxford Quidlings,PERSONAL
+Christof Rindlisbacher,Radcliffe Chimeras,PLAYER
+Christof Rindlisbacher,Oxford Quidlings,PERSONAL
+Hannah Watts,Radcliffe Chimeras,PLAYER
+Hannah Watts,Oxford Quidlings,PERSONAL
+Isidro Álvarez Mayor,Radcliffe Chimeras,PLAYER
+Isidro Álvarez Mayor,Oxford Quidlings,PERSONAL
+Serene Shibli,Radcliffe Chimeras,PLAYER
+Serene Shibli,Oxford Quidlings,PERSONAL
+Serene Shibli,Southampton Quidditch Club Firsts,PERSONAL
+Emma Isle,Brizzlebears,PLAYER
+Emma Isle,Brizzlebees,PERSONAL
+George Whiting,Brizzlebears,PLAYER
+George Whiting,Brizzlebees,PERSONAL
+Jodie Mee,Brizzlebears,PLAYER
+Jodie Mee,Brizzlebees,PERSONAL
+Ollie Bridgen,Brizzlebears,PLAYER
+Ollie Bridgen,Brizzlebees,PERSONAL
+Sam Senior,Brizzlebears,PLAYER
+Sam Senior,Brizzlebees,PERSONAL
+Samantha Frohlich,Brizzlebears,PLAYER
+Samantha Frohlich,Brizzlebees,PERSONAL
+Sophie Connelly,Brizzlebears,PLAYER
+Sophie Connelly,Brizzlebees,PERSONAL
+Ashara Peiris,The London Unspeakables,PLAYER
+Ashara Peiris,The London Unbreakables,PERSONAL
+Fabian Brunt,The London Unspeakables,PLAYER
+Fabian Brunt,The London Unbreakables,PERSONAL
+Kieran Newton,The London Unspeakables,PLAYER
+Kieran Newton,The London Unbreakables,PERSONAL
+Matt Bateman,The London Unspeakables,PLAYER
+Matt Bateman,The London Unbreakables,PERSONAL
+Matt Bateman,Norwich Nifflers,PERSONAL
+Olly Nguyen,The London Unspeakables,PLAYER
+Olly Nguyen,The London Unbreakables,PERSONAL
+Paula Marmolejo Morazo,The London Unspeakables,PLAYER
+Paula Marmolejo Morazo,The London Unbreakables,PERSONAL
+Charlie Taylor,Southampton Quidditch Club Firsts,PLAYER
+Charlie Taylor,Southampton Quidditch Club Seconds,PERSONAL
+Charlie Taylor,Southampton Quidditch Club Firsts,PLAYER
+Charlie Taylor,Southampton Quidditch Club Seconds,PERSONAL
+Harvey Rampton,Southampton Quidditch Club Firsts,PLAYER
+Harvey Rampton,Southampton Quidditch Club Seconds,PERSONAL
+Jonathan Talsma-James,Southampton Quidditch Club Firsts,PLAYER
+Jonathan Talsma-James,Southampton Quidditch Club Seconds,PERSONAL
+Anthony Tatman,Bathilisks,PLAYER
+Luke Rose,Bathilisks,PLAYER
+Tom Newton,Bathilisks,PLAYER
+Tom Newton,Brizzlebears,PERSONAL
+Tom Newton,Brizzlebees,PERSONAL
+Tom Newton,Reading Knights,PERSONAL
+Eva Wallis,Norwich Nifflers,PLAYER
+Georgie Rumney,Norwich Nifflers,PLAYER
+Georgie Rumney,The London Unspeakables,PERSONAL
+Georgie Rumney,The London Unbreakables,PERSONAL
+Kieran Pratt,Norwich Nifflers,PLAYER
+Lewis Manning,Norwich Nifflers,PLAYER
+Thomas Gymer,Norwich Nifflers,PLAYER
+Jaelithe Swan,Portsmouth Horntail Strikers,PLAYER
+Scott Brown,Portsmouth Horntail Strikers,PLAYER
+Tristan Harris,Portsmouth Horntail Strikers,PLAYER
+Aaron Veale,Southampton Quidditch Club Seconds,PLAYER
+Aaron Veale,Southampton Quidditch Club Firsts,PERSONAL
+Aaron Veale,Werewolves of London,PERSONAL
+Anjit Aulakh,Southampton Quidditch Club Seconds,PLAYER
+Anjit Aulakh,Southampton Quidditch Club Firsts,PERSONAL
+Fraser Posford,Southampton Quidditch Club Seconds,PLAYER
+Fraser Posford,Southampton Quidditch Club Firsts,PERSONAL
+Kerry Aziz,Southampton Quidditch Club Seconds,PLAYER
+Kerry Aziz,Southampton Quidditch Club Firsts,PERSONAL
+Lena Mandahus,Southampton Quidditch Club Seconds,PLAYER
+Lena Mandahus,Southampton Quidditch Club Firsts,PERSONAL

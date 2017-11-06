@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import refscheduler.util.DozerMapper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -46,7 +47,8 @@ public class PersonService {
 
     public Person getByName(final String name) {
         final String[] names = name.split(" ");
-        final PersonEntity personEntity = personRepository.findByFirstNameAndLastName(names[0], names[1]);
+        final String lastNames = String.join(" ", Arrays.asList(names).subList(1, names.length));
+        final PersonEntity personEntity = personRepository.findByFirstNameAndLastName(names[0], lastNames);
 
         return mapper.map(personEntity, Person.class);
     }

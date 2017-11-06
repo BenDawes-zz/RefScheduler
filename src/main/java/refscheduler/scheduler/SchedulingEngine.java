@@ -3,6 +3,7 @@ package refscheduler.scheduler;
 import org.springframework.stereotype.Service;
 import refscheduler.affiliation.Affiliation;
 import refscheduler.game.Game;
+import refscheduler.person.Level;
 import refscheduler.person.Person;
 import refscheduler.timeslot.Timeslot;
 import refscheduler.util.HungarianAlgorithm;
@@ -81,12 +82,14 @@ public class SchedulingEngine {
                     } else {
                         if (k == 0) {
                             cost = currentOfficial.getHeadRefereeLevel().level();
-                        } else if (k > 0 && k <= arsPerGame) {
+                        } else if (k <= arsPerGame) {
                             cost = currentOfficial.getAssistantRefereeLevel().level();
                         } else if (k == numberOfOfficialsPerGame - 2) {
                             cost = currentOfficial.getSnitchRefereeLevel().level();
                         } else {
-                            cost = currentOfficial.getSnitchLevel().level();
+                            cost = currentOfficial.getSnitchLevel().level() == Level.LEVEL_5.level()
+                                ? HIGH_COST
+                                : currentOfficial.getSnitchLevel().level();
                         }
                     }
 
